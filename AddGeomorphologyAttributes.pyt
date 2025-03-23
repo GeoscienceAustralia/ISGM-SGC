@@ -579,7 +579,7 @@ class helpers(object):
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
             elif parameters[4].value in ['delta','delta lobe']:
-                parameters[5].filter.list = ['NA','Unknown','upper','lower','front','pro-','bayhead','shelf-edge','tidal delta (flood or ebb or both)']
+                parameters[5].filter.list = ['NA','Unknown','upper','lower','front','pro-','bayhead','shelf-edge','tidal delta']
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
             elif parameters[4].value == 'subaerial channel':
@@ -595,11 +595,11 @@ class helpers(object):
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
             elif parameters[4].value == 'tidal flat':
-                parameters[5].filter.list = ['NA','Unknown','supratidal','subtidal','intertidal']
+                parameters[5].filter.list = ['NA','Unknown','supratidal flat','subtidal flat','intertidal flat']
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
             elif parameters[4].value == 'lagoon':
-                parameters[5].filter.list = ['NA','Unknown','closed','open','intermittent']
+                parameters[5].filter.list = ['NA','Unknown','closed lagoon','open lagoon','intermittently closed and open lagoon']
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
             elif parameters[4].value in ['beach','raised beach']:
@@ -607,7 +607,7 @@ class helpers(object):
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
             elif parameters[4].value == 'rocky coast':
-                parameters[5].filter.list = ['NA','Unknown','outcrop','plunging cliff','cliff','toe','shore platform (sloping or horizontal)',
+                parameters[5].filter.list = ['NA','Unknown','outcrop','plunging cliff','cliff','toe','shore platform',
                                              'notch','stack','arch','pool','cave','ramp','pothole','furrow','rampart']
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
