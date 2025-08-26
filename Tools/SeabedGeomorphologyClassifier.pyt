@@ -59,10 +59,10 @@ class Seabed_Geomorphology_Classifier(object):
             direction="Input")
         param2.filter.type = "ValueList"
         # Table 17-1 Physiography in Part 2 Geomorphology Scheme (Nanson et al., 2023)
-        param2.filter.list = ['NA'] + sorted(['Continental Shelf','Continental Slope','Continental Rise',
-                                              'Oceanic Trench','Mid-ocean Ridge','Axial Valley','Axial High',
-                                              'Abyssal Plain','Accretionary Prism','Back-arc Basin','Fore-arc Basin',
-                                              'Island Arc'])
+        param2.filter.list = ['NA'] + sorted(['continental shelf','continental slope','continental rise',
+                                              'oceanic trench','mid-ocean ridge','axial valley','axial high',
+                                              'abyssal plain','accretionary prism','back-arc basin','fore-arc basin',
+                                              'island arc'])
         param2.value = 'NA'
         
         # 4th parameter
