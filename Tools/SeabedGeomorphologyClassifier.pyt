@@ -176,7 +176,8 @@ class Seabed_Geomorphology_Classifier(object):
             parameterType="Required",
             direction="Input")
         param12.filter.type = "ValueList"
-        param12.filter.list = ['NA'] + sorted(['transgressive','regressive','stillstand'])
+        param12.filter.list = ['NA'] + sorted(['aggradational','forced regressive','normal regressive',
+                                               'lowstand normal regressive','highstand normal regressive','transgressive'])
         param12.value = 'NA'
 
 
@@ -195,34 +196,59 @@ class Seabed_Geomorphology_Classifier(object):
 
         # 15th parameter
         param14 = arcpy.Parameter(
-            displayName="Particle size characterisation",
+            displayName="Mean grain size",
             name="particleSize",
             datatype="GPValueTable",
             parameterType="Required",
             direction="Input")
         param14.columns = [['GPString','Value'],['GPString','Unit']]
         param14.filters[1].type = "ValueList"
-        param14.values = [['9999','mm']]       
-        param14.filters[1].list = ['mm','phi']        
- 
+        param14.values = [['NA','mm']]       
+        param14.filters[1].list = ['mm','phi']
+        param14.category = "Particle size characterisation"
 
         # 16th parameter
         param15 = arcpy.Parameter(
+            displayName="Folk texture",
+            name="textureClass",
+            datatype="GPString",
+            parameterType="Required",
+            direction="Input")
+        param15.filter.type = "ValueList"
+        param15.filter.list = ['NA'] + sorted(['G','mG','msG','sG','gM','gmS','gS',
+                                               '(g)M','(g)sM','(g)mS','(g)S','M','sM','mS','S'])
+        param15.value = 'NA'
+        param15.category = "Particle size characterisation"
+
+        # 17th parameter
+        param16 = arcpy.Parameter(
+            displayName="Gravel, sand and mud contents",
+            name="gsmContents",
+            datatype="GPValueTable",
+            parameterType="Required",
+            direction="Input")
+        param16.columns = [['GPString','Gravel'],['GPString','Sand'],['GPString','Mud']]
+        param16.values = [['NA','NA', 'NA']]
+        param16.category = "Particle size characterisation"
+ 
+
+        # 18th parameter
+        param17 = arcpy.Parameter(
             displayName="Terrain attribute",
             name="terrain",
             datatype="GPString",
             parameterType="Required",
             direction="Input")
-        param15.value = 'NA'
+        param17.value = 'NA'
 
-        # 17th parameter
-        param16 = arcpy.Parameter(
+        # 19th parameter
+        param18 = arcpy.Parameter(
             displayName="Marginal marine process classification",
             name="marginal",
             datatype="GPString",
             parameterType="Required",
             direction="Input")
-        param16.filter.type = "ValueList"
+        param18.filter.type = "ValueList"
         # this does not work because could not get Python to display Italic character in a text string
 ##        param16.filter.list = ['NA','F','W','T','Fw',
 ##                               'Ft','Tf','Tw',
@@ -232,7 +258,7 @@ class Seabed_Geomorphology_Classifier(object):
 ##                               'Wave dominated, fluvial influenced, tide affected','fw','tf',
 ##                               'wt','fwt','Fwt',
 ##                               'Twf','Wtf']
-        param16.filter.list = ['NA'] + sorted(['Fluvial dominated','Wave dominated','Tide dominated',
+        param18.filter.list = ['NA'] + sorted(['Fluvial dominated','Wave dominated','Tide dominated',
                                                'Fluvial dominated, wave influenced','Fluvial dominated, tide influenced',
                                                'Tide dominated, fluvial influenced','Tide dominated, wave influenced',
                                                'Wave dominated, tide influenced','Wave dominated, fluvial influenced',
@@ -247,49 +273,64 @@ class Seabed_Geomorphology_Classifier(object):
                                                'Fluvial dominated, wave and tide influenced',
                                                'Tide dominated, wave and fluvial influenced',
                                                'Wave dominated, tide and fluvial influenced'])
-        param16.value = 'NA'
+        param18.value = 'NA'
 
-        # 18th parameter
-        param17 = arcpy.Parameter(
+        # 20th parameter
+        param19 = arcpy.Parameter(
             displayName="Aeolian input",
             name="aeolian",
             datatype="GPString",
             parameterType="Required",
             direction="Input")
-        param17.filter.type = "ValueList"
-        param17.filter.list = ['NA','aeolian']
-        param17.value = 'NA'
+        param19.filter.type = "ValueList"
+        param19.filter.list = ['NA','aeolian']
+        param19.value = 'NA'
 
-        # 19th parameter
-        param18 = arcpy.Parameter(
+        # 21st parameter
+        param20 = arcpy.Parameter(
             displayName="Comments",
             name="comments",
             datatype="GPString",
             parameterType="Required",
             direction="Input")
 
-        param18.value = 'NA'
+        param20.value = 'NA'
+        param20.category = "Geomorphology analyst"
 
-        # 20th parameter
-        param19 = arcpy.Parameter(
-            displayName="Geomorphology analyst name",
+        # 22nd parameter
+        param21 = arcpy.Parameter(
+            displayName="Name",
             name="operator",
             datatype="GPString",
             parameterType="Required",
             direction="Input")
+        
+        param21.value = "anonymous"
+        param21.category = "Geomorphology analyst"
 
-        # 21th parameter
-        param20 = arcpy.Parameter(
-            displayName="Geomorphology analyst organisation",
+        # 23rd parameter
+        param22 = arcpy.Parameter(
+            displayName="Organisation",
             name="organisation",
             datatype="GPString",
             parameterType="Required",
             direction="Input")
-        param20.value = 'Geoscience Australia'
+        param22.value = 'Geoscience Australia'
+        param22.category = "Geomorphology analyst"
+
+        # 23rd parameter
+        param23 = arcpy.Parameter(
+            displayName="Reset",
+            name="reset",
+            datatype="GPBoolean",
+            parameterType="Optional",
+            direction="Input")
+        param23.value = False
+        param23.category = "Reset parameters"
 
         
         parameters = [param0, param1, param2, param3, param4, param5, param6,param7,param8,param9,param10,
-                      param11,param12,param13,param14,param15,param16,param17,param18,param19,param20]
+                      param11,param12,param13,param14,param15,param16,param17,param18,param19,param20,param21,param22,param23]
         return parameters
 
     def isLicensed(self):
@@ -301,6 +342,32 @@ class Seabed_Geomorphology_Classifier(object):
         validation is performed.  This method is called whenever a parameter
         has been changed."""
         helper = helpers()
+
+        # reset parameters when the reset box is ticked
+        if parameters[23].value == True:
+            #parameters[2].value = 'NA'
+            parameters[2].value = 'NA'
+            parameters[3].value = 'NA'
+            parameters[4].value = 'NA'
+            parameters[5].value = 'NA'
+            parameters[6].value = 'NA'
+            parameters[7].value = 'NA'
+            parameters[8].value = 'NA'
+            parameters[9].value = 'NA'
+            parameters[10].value = 'NA'
+            parameters[11].value = 'NA'
+            parameters[12].value = 'NA'
+            parameters[13].value = 'NA'
+            parameters[14].values = [['NA','mm']]
+            parameters[15].value = 'NA'
+            parameters[16].values = [['NA','NA','NA']]
+            parameters[17].value = 'NA'
+            parameters[18].value = 'NA'
+            parameters[19].value = 'NA'
+            parameters[20].value = 'NA'
+            parameters[23].value = False
+
+            
         # key bits of the tool
         # basically we want to update the drop-down lists based on certain selections
         if parameters[3].value:
@@ -488,6 +555,8 @@ class Seabed_Geomorphology_Classifier(object):
         env.workspace=workspaceName
         env.overwriteOutput = True
 
+        
+
         # get the values enter/select by the user
         valueList = []
         physiography = parameters[2].valueAsText
@@ -514,30 +583,76 @@ class Seabed_Geomorphology_Classifier(object):
         valueList.append(sealevel)
         lithology = parameters[13].valueAsText
         valueList.append(lithology)
+        # deal with the mean grain size parameter
         particleSize = parameters[14].valueAsText
-        if particleSize == '9999 mm':
+        if (particleSize == 'NA mm') or (particleSize == 'NA phi'):
             particleSize = 'NA' # default value
         else:
             pSV = particleSize.split(' ')[0]
             pSU = particleSize.split(' ')[1]
-            if not helper.is_number(pSV):
-                messages.addErrorMessage("The value for the particle size must be a valid number!")
+            if (not helper.is_number(pSV)) and (pSV != 'NA'):
+                messages.addErrorMessage("The value for the mean grain size must be either a valid number or NA!")
                 raise arcpy.ExecuteError
-            elif (pSU == 'mm') and (float(pSV) <= 0):
-                messages.addErrorMessage("It is not valid to have a negative particle size in mm unit!")
+            elif (helper.is_number(pSV)) and (pSU == 'mm') and (float(pSV) <= 0):
+                messages.addErrorMessage("It is not valid to have a negative mean grain size in mm unit!")
                 raise arcpy.ExecuteError
         valueList.append(particleSize)
-        terrain = parameters[15].valueAsText
+        
+        textureClass = parameters[15].valueAsText
+        valueList.append(textureClass)
+        # deal with the gravel, sand and mud contents parameter
+        gsmContents = parameters[16].valueAsText    
+        gravel = gsmContents.split(' ')[0]
+        sand = gsmContents.split(' ')[1]
+        mud = gsmContents.split(' ')[2]
+        # test validity of the values
+        if (not helper.is_number(gravel)) and (gravel != 'NA'):
+            messages.addErrorMessage("The value for the gravel content must be either a valid number or NA!")
+            raise arcpy.ExecuteError
+        elif helper.is_number(gravel):
+            if (float(gravel) < 0) or (float(gravel) > 100):
+                messages.addErrorMessage("The value for the gravel content must be between 0 and 100!")
+                raise arcpy.ExecuteError
+
+        if (not helper.is_number(sand)) and (sand != 'NA'):
+            messages.addErrorMessage("The value for the sand content must be either a valid number or NA!")
+            raise arcpy.ExecuteError
+        elif helper.is_number(sand):
+            if (float(sand) < 0) or (float(sand) > 100):
+                messages.addErrorMessage("The value for the sand content must be between 0 and 100!")
+                raise arcpy.ExecuteError
+
+        if (not helper.is_number(mud)) and (mud != 'NA'):
+            messages.addErrorMessage("The value for the mud content must be either a valid number or NA!")
+            raise arcpy.ExecuteError
+        elif helper.is_number(mud):
+            if (float(mud) < 0) or (float(mud) > 100):
+                messages.addErrorMessage("The value for the mud content must be between 0 and 100!")
+                raise arcpy.ExecuteError
+        # make sure the total content does not exceed 100
+        if gravel == 'NA':
+            gravel = '0'
+        if sand == 'NA':
+            sand = '0'
+        if mud == 'NA':
+            mud = '0' 
+        gsmTotal = float(gravel) + float(sand) + float(mud)
+        if gsmTotal > 100:
+            messages.addErrorMessage("The total content of gravel, sand and mud must not exceed 100!")
+            raise arcpy.ExecuteError
+        valueList.append(gsmContents)
+        
+        terrain = parameters[17].valueAsText
         valueList.append(terrain)
-        marginal = parameters[16].valueAsText
+        marginal = parameters[18].valueAsText
         valueList.append(marginal)
-        aeolian = parameters[17].valueAsText
+        aeolian = parameters[19].valueAsText
         valueList.append(aeolian)
-        comments = parameters[18].valueAsText
+        comments = parameters[20].valueAsText
         valueList.append(comments)
-        operator = parameters[19].valueAsText
+        operator = parameters[21].valueAsText
         valueList.append(operator)
-        organisation = parameters[20].valueAsText
+        organisation = parameters[22].valueAsText
         valueList.append(organisation)
 
         
@@ -549,9 +664,9 @@ class Seabed_Geomorphology_Classifier(object):
         field_names = [f.name for f in fields]
         # a list of attributes to be added and calculated
         fieldList = ['PhysiogSetting','GeomorphSetting','Basic_Geom_Unit','BGU_T','BGU_sT','ProcessAttribute',
-                     'GeometricAttribute','Grouping','Age','StratPosition','SeaLevel','Lithology','GrainSize',
-                     'TerrianAttributes','ProcessClass','AeolianInput','Comments','GeomorphAnalystName',
-                     'GeomorphAnalystOrganisation']
+                     'GeometricAttribute','Grouping','Age','StratPosition','SeaLevel','Lithology','MeanGrainSize',
+                     'FolkTexture','GravelSandMudContents','TerrianAttributes','ProcessClass','AeolianInput',
+                     'Comments','GeomorphAnalystName','GeomorphAnalystOrganisation']
         for fieldName in fieldList:
             fieldType = "TEXT"
             fieldLength = 200
@@ -604,6 +719,7 @@ class helpers(object):
         except ValueError:
             is_number = False
         return is_number
+            
 
     def do_current_induced(self,parameters):                
         if parameters[4].value:
