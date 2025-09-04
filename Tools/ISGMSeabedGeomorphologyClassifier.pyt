@@ -19,14 +19,14 @@ class Toolbox(object):
         # List of tool classes associated with this toolbox
         # There is only one tool. The tool add a list of geomorphology attributes to the selected features of the
         # active layer in the active map in ArcGIS Pro.
-        self.tools = [Seabed_Geomorphology_Classifier]
+        self.tools = [ISGM_Seabed_Geomorphology_Classifier]
 
 
 
-class Seabed_Geomorphology_Classifier(object):
+class ISGM_Seabed_Geomorphology_Classifier(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
-        self.label = "Seabed Geomorphology Classifier"
+        self.label = "ISGM Seabed Geomorphology Classifier"
         self.description = "Assign Geomorphology Classification Attributes to the selected features"
         self.canRunInBackground = False
 
@@ -52,7 +52,7 @@ class Seabed_Geomorphology_Classifier(object):
 
         # third parameter
         param2 = arcpy.Parameter(
-            displayName="Physiography Setting",
+            displayName="Physiography setting",
             name="physiograpy",
             datatype="GPString",
             parameterType="Required",
@@ -222,7 +222,7 @@ class Seabed_Geomorphology_Classifier(object):
 
         # 17th parameter
         param16 = arcpy.Parameter(
-            displayName="Gravel, sand and mud contents",
+            displayName="Gravel, sand and mud contents (%)",
             name="gsmContents",
             datatype="GPValueTable",
             parameterType="Required",
