@@ -1,0 +1,189 @@
+﻿SETTING,BGU,BGU_Code,Comment,Suggested_BGU_Code
+Anthropogenic,archaeological,An03,,An03
+Anthropogenic,disturbance,An01,,An01
+Anthropogenic,structure,An02,,An02
+Biogenic,back reef,Bi03,,Bi03
+Biogenic,bed,Bi06,,Bi06
+Biogenic,Biogenic reef,Bi02,name changed,Bi02
+Biogenic,bioherm,Bi01,,Bi01
+Biogenic,biostrome,Bi10,"should have the same code as bed and mat, as it is aka",Bi06
+Biogenic,excavation,Bi04,,Bi04
+Biogenic,fore-reef,Bi05,,Bi05
+Biogenic,mat,Bi06,,Bi06
+Biogenic,mound,Bi01,,Bi01
+Biogenic,reef crest,Bi07,,Bi07
+Biogenic,reef flat,Bi08,,Bi08
+Biogenic,reef lagoon,Bi09,,Bi09
+Biogenic,spur-and-groove,Bi11,,Bi11
+Coastal,back barrier,Co02,,Co02
+Coastal,barrier,Co03,,Co03
+Coastal,barrier complex,Co09,,Co09
+Coastal,barrier system,Co09,,Co09
+Coastal,beach,Co14,,Co14
+Coastal,beach ridge,Co06,,Co06
+Coastal,beachface,Co07,,Co07
+Coastal,channel belt,Co20,,Co20
+Coastal,channel ledge,Co08,,Co08
+Coastal,chenier ridge,Co10,,Co10
+Coastal,Coastal barform,Co05,name changed,Co05
+Coastal,Coastal delta,Co04,name changed,Co04
+Coastal,Coastal subaerial valley,Co12,name changed,Co12
+Coastal,Coastal delta lobe,Co21,name changed,Co21
+Coastal,floodplain,Co15,,Co15
+Coastal,floodplain terrace,Co19,,Co19
+Coastal,foreshore,Co07,,Co07
+Coastal,lagoon,Co11,,Co11
+Coastal,raised beach,Co17,,Co17
+Coastal,rocky coast,Co01,,Co01
+Coastal,shoreface,Co18,,Co18
+Coastal,subaerial channel,Co13,,Co13
+Coastal,tidal flat,Co16,,Co16
+Coastal,Coastal fan-delta,Coxx,new entry,Co22
+Current-induced,barform,Ci01,,Ci01
+Current-induced,bedform,Ci04,,Ci04
+Current-induced,chute channel,Ci02,,Ci02
+Current-induced,Current-induced channel,Ci03,name changed,Ci03
+Current-induced,knickpoint,Ci05,,Ci05
+Current-induced,oxbow,Ci06,,Ci06
+Current-induced,plunge pool,Ci07,,Ci07
+Fluid Flow,blow-out crater,FF03,,FF03
+Fluid Flow,caldera (mud volcano),FF04,,FF04
+Fluid Flow,crater,FF04,,FF04
+Fluid Flow,gryphon (mud volcano),FF07,,FF07
+Fluid Flow,hydrothermal mound,FF08,,FF08
+Fluid Flow,hydrothermal vent,FF02,,FF02
+Fluid Flow,moat (mud volcano),FF09,,FF09
+Fluid Flow,mud volcano,FF10,,FF10
+Fluid Flow,mudflow (mud volcano),FF11,,FF11
+Fluid Flow,outcropping methane-derived authigenic carbonate (MDAC),FF01,,FF01
+Fluid Flow,collapsed pingo,FF12,name changed,FF12
+Fluid Flow,pingo,FF06,,FF06
+Fluid Flow,pockmark,FF05,,FF05
+Fluid Flow,ring fault (mud volcano),FF13,name changed,FF13
+Fluid Flow,subsidence rim,FF09,"new entry, aka to moat (mud volcano), use the same code",FF09
+Fluvial,catchment,Fl02,,Fl02
+Fluvial,channel belt,Fl10,,Fl10
+Fluvial,channel ledge,Fl12,,Fl12
+Fluvial,Fluvial delta lobe,Fl11,name changed,Fl11
+Fluvial,drainage basin,Fl02,,Fl02
+Fluvial,drainage network,Fl03,,Fl03
+Fluvial,floodplain,Fl08,,Fl08
+Fluvial,floodplain terrace,Fl09,,Fl09
+Fluvial,Fluvial delta,Fl04,name changed,Fl04
+Fluvial,Fluvial fan,Fl05,name changed,Fl05
+Fluvial,Fluvial fan lobe,Fl06,name changed,Fl06
+Fluvial,Fluvial subaerial valley,Fl07,name changed,Fl07
+Fluvial,Fluvial fan-delta,Flxx,new entry,Fl13
+Fluvial,subaerial channel,Fl01,,Fl01
+Glacial,corrugation ridges,Gl03,,Gl03
+Glacial,corrugation ridges within ploughmarks,Gl04,,Gl04
+Glacial,crevasse-filling,Gl05,,Gl05
+Glacial,crevasse-squeeze ridge,Gl05,,Gl05
+Glacial,cross-shelf trough,Gl33,,Gl33
+Glacial,cupola hill,Gl06,,Gl06
+Glacial,erratic,Gl07,,Gl07
+Glacial,esker,Gl08,,Gl08
+Glacial,Glacial basin,Gl09,name changed,Gl09
+Glacial,Glacial fjord,Gl10,name changed,Gl10
+Glacial,glacier-fed delta,Gl11,,Gl11
+Glacial,glacifluvial delta,Gl11,,Gl11
+Glacial,glacifluvial outwash plain,Gl12,,Gl12
+Glacial,glacigenic debris flow/lobe,Gl13,,Gl13
+Glacial,glacitectonic raft,Gl15,,Gl15
+Glacial,grounding-line fan,Gl20,,Gl20
+Glacial,grounding zone fan,Gl20,,Gl20
+Glacial,grounding zone wedge,Gl16,,Gl16
+Glacial,hill-hole pair,Gl14,,Gl14
+Glacial,hummocky terrain,Gl18,,Gl18
+Glacial,ice-contact delta,Gl19,,Gl19
+Glacial,ice-contact fan,Gl20,,Gl20
+Glacial,ice-proximal fan,Gl20,,Gl20
+Glacial,iceberg grounding pit,Gl21,,Gl21
+Glacial,iceberg ploughmark,Gl25,,Gl25
+Glacial,kettle hole,Gl22,,Gl22
+Glacial,medial moraine,Gl23,,Gl23
+Glacial,meltwater channel,Gl24,,Gl24
+Glacial,moraine,Gl01,,Gl01
+Glacial,proglacial meltwater channel,Gl26,,Gl26
+Glacial,ribs,Gl03,,Gl03
+Glacial,Rogen (ribbed) moraine,Gl27,,Gl27
+Glacial,sandur,Gl12,,Gl12
+Glacial,sill/threshold,Gl28,,Gl28
+Glacial,streamlined landform,Gl02,,Gl02
+Glacial,sub-ice shelf keel scour mark,Gl29,,Gl29
+Glacial,thrust-block moraine,Gl30,,Gl30
+Glacial,trough-mouth fan,Gl31,,Gl31
+Glacial,tunnel valley,Gl32,,Gl32
+Glacial,U-shaped valley,Gl17,,Gl17
+Karst,carbonate karst,Ka01,,Ka01
+Karst,salt karst,Ka03,,Ka03
+Karst,sandstone karst,Ka02,,Ka02
+Marine,canyon head,Ma01,,Ma01
+Marine,canyon mouth,Ma02,,Ma02
+Marine,Marine barform,Ma03,name changed,Ma03
+Marine,Marine reef,Ma04,name changed,Ma04
+Marine,submarine canyon,Ma05,,Ma05
+Marine,submarine channel,Ma06,,Ma06
+Marine,submarine channel belt,Ma07,,Ma07
+Marine,submarine fan,Ma08,,Ma08
+Marine,submarine gully,Ma09,,Ma09
+Marine,submarine terrace,Ma10,,Ma10
+Marine,submarine tributary canyon,Ma11,,Ma11
+Marine,submarine valley,Ma12,,Ma12
+Mass Movement,accumulation zone,MM08,,MM08
+Mass Movement,complex,MM01,,MM01
+Mass Movement,compressional domain,MM08,,MM08
+Mass Movement,crown crack,MM02,,MM02
+Mass Movement,debris apron,MM03,,MM03
+Mass Movement,debris fan,MM05,,MM05
+Mass Movement,depletion zone,MM10,,MM10
+Mass Movement,depositional zone,MM08,,MM08
+Mass Movement,evacuation zone,MM10,,MM10
+Mass Movement,extensional domain,MM10,,MM10
+Mass Movement,extensional ridge,MM11,,MM11
+Mass Movement,fall,MM04,,MM04
+Mass Movement,flow,MM06,,MM06
+Mass Movement,head scarp,MM13,,MM13
+Mass Movement,headwall,MM13,,MM13
+Mass Movement,headwall domain,MM10,,MM10
+Mass Movement,lateral scarp,MM14,,MM14
+Mass Movement,lateral spread,MM15,,MM15
+Mass Movement,Mass-movement compressional ridge,MM16,name changed,MM16
+Mass Movement,Mass-movement toe,MM17,name changed,MM17
+Mass Movement,minor scarp,MM18,,MM18
+Mass Movement,mudflow fan,MM19,,MM19
+Mass Movement,mudflow gully,MM20,,MM20
+Mass Movement,remnant block,MM21,,MM21
+Mass Movement,secondary escarpment,MM18,,MM18
+Mass Movement,sidewall,MM14,,MM14
+Mass Movement,slide,MM12,,MM12
+Mass Movement,talus apron,MM22,,MM22
+Mass Movement,talus fan,MM23,,MM23
+Mass Movement,tension cracks,MM02,,MM02
+Mass Movement,topple,MM07,,MM07
+Mass Movement,translated block,MM09,,MM09
+Mass Movement,transverse crack,MM24,,MM24
+Mass Movement,transverse ridge,MM16,,MM16
+Mass Movement,turbidite fan,MM25,,MM25
+Mass Movement,turbidite levee,MM26,,MM26
+Mass Movement,turbidity channel,MM27,,MM27
+Solid Earth,abyssal hill,SE01,,SE01
+Solid Earth,astrobleme,SE11,,SE11
+Solid Earth,axial volcanic ridge,SE02,,SE02
+Solid Earth,bedding ridge,SE06,,SE06
+Solid Earth,bedrock outcrop (undefined),SE04,,SE04
+Solid Earth,bench,SE07,,SE07
+Solid Earth,cliff,SE13,,SE13
+Solid Earth,dip slope,SE07,,SE07
+Solid Earth,guyot,SE10,,SE10
+Solid Earth,impact crater,SE11,,SE11
+Solid Earth,magmatic outcrop,SE05,,SE05
+Solid Earth,oceanic core complex,SE12,,SE12
+Solid Earth,scarp slope,SE13,,SE13
+Solid Earth,tectonic depression,SE09,,SE09
+Solid Earth,tectonic escarpment,SE14,,SE14
+Solid Earth,tectonic high,SE03,,SE03
+Solid Earth,tectonic lineament,SE08,,SE08
+Solid Earth,volcano (island or submarine),SE10,,SE10
+Any,NA,Naxx,suggest new entry,NA01
+Any,Unknown,Unxx,suggest new entry,Un01

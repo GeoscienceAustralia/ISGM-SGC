@@ -6,6 +6,10 @@ import arcpy
 from arcpy import env
 from arcpy.sa import *
 import numpy as np
+import pandas as pd
+import numpy as np
+import os
+import sys
 arcpy.CheckOutExtension("Spatial")
 
 
@@ -14,7 +18,7 @@ class Toolbox(object):
         """Define the toolbox (the name of the toolbox is the name of the
         .pyt file)."""
         self.label = "Toolbox"
-        self.alias = "AddAttributes"
+        self.alias = "ISGM_Seabed_Geomorphology_Classifier"
 
         # List of tool classes associated with this toolbox
         # There is only one tool. The tool add a list of geomorphology attributes to the selected features of the
@@ -113,7 +117,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
 
         # 8th parameter
         param7 = arcpy.Parameter(
-            displayName="Additional process attribute",
+            displayName="Process attribute",
             name="process",
             datatype="GPString",
             parameterType="Required",
@@ -121,10 +125,11 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param7.filter.type = "ValueList"
         param7.filter.list = ['NA']
         param7.value = 'NA'
+        param7.category = "Current-induced attributes"
 
         # 9th parameter
         param8 = arcpy.Parameter(
-            displayName="Additional geometric attribute",
+            displayName="Geometric attribute",
             name="geometric",
             datatype="GPString",
             parameterType="Required",
@@ -133,6 +138,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param8.filter.type = "ValueList"
         param8.filter.list = ['NA']
         param8.value = 'NA'
+        param8.category = "Current-induced attributes"
 
         # 10th parameter
         param9 = arcpy.Parameter(
@@ -144,6 +150,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param9.filter.type = "ValueList"
         param9.filter.list = ['NA','chain','field']
         param9.value = 'NA'
+        param9.category = "Additional attributes"
 
         # 11th parameter
         param10 = arcpy.Parameter(
@@ -154,7 +161,8 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
             direction="Input")
         param10.filter.type = "ValueList"
         param10.filter.list = ['NA'] + sorted(['relict','palimpsest','modern'])
-        param10.value = 'NA'
+        param10.value = 'NA'        
+        param10.category = "Additional attributes"
 
         # 12th parameter
         param11 = arcpy.Parameter(
@@ -165,7 +173,8 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
             direction="Input")
         param11.filter.type = "ValueList"
         param11.filter.list = ['NA'] + sorted(['surface','buried','partially buried'])
-        param11.value = 'NA' 
+        param11.value = 'NA'        
+        param11.category = "Additional attributes"
 
 
         # 13th parameter
@@ -179,6 +188,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param12.filter.list = ['NA'] + sorted(['aggradational','forced regressive','normal regressive',
                                                'lowstand normal regressive','highstand normal regressive','transgressive'])
         param12.value = 'NA'
+        param12.category = "Additional attributes"
 
 
         # 14th parameter
@@ -192,11 +202,12 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param13.filter.list = ['NA'] + sorted(['hard','soft sediment (siliciclastic or carbonate)',
                                                'consolidated sediment'])
         param13.value = 'NA'
+        param13.category = "Additional attributes"
 
 
         # 15th parameter
         param14 = arcpy.Parameter(
-            displayName="Mean grain size",
+            displayName="Particle size characterisation: Mean grain size",
             name="particleSize",
             datatype="GPValueTable",
             parameterType="Required",
@@ -205,11 +216,11 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param14.filters[1].type = "ValueList"
         param14.values = [['NA','mm']]       
         param14.filters[1].list = ['mm','phi']
-        param14.category = "Particle size characterisation"
+        param14.category = "Additional attributes"
 
         # 16th parameter
         param15 = arcpy.Parameter(
-            displayName="Folk texture",
+            displayName="Particle size characterisation: Folk texture",
             name="textureClass",
             datatype="GPString",
             parameterType="Required",
@@ -218,18 +229,18 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param15.filter.list = ['NA'] + sorted(['G','mG','msG','sG','gM','gmS','gS',
                                                '(g)M','(g)sM','(g)mS','(g)S','M','sM','mS','S'])
         param15.value = 'NA'
-        param15.category = "Particle size characterisation"
+        param15.category = "Additional attributes"
 
         # 17th parameter
         param16 = arcpy.Parameter(
-            displayName="Gravel, sand and mud contents (%)",
+            displayName="Particle size characterisation: Gravel, sand and mud contents (%)",
             name="gsmContents",
             datatype="GPValueTable",
             parameterType="Required",
             direction="Input")
         param16.columns = [['GPString','Gravel'],['GPString','Sand'],['GPString','Mud']]
         param16.values = [['NA','NA', 'NA']]
-        param16.category = "Particle size characterisation"
+        param16.category = "Additional attributes"
  
 
         # 18th parameter
@@ -240,6 +251,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
             parameterType="Required",
             direction="Input")
         param17.value = 'NA'
+        param17.category = "Additional attributes"
 
         # 19th parameter
         param18 = arcpy.Parameter(
@@ -274,6 +286,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
                                                'Tide dominated, wave and fluvial influenced',
                                                'Wave dominated, tide and fluvial influenced'])
         param18.value = 'NA'
+        param18.category = "Additional attributes"
 
         # 20th parameter
         param19 = arcpy.Parameter(
@@ -285,6 +298,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param19.filter.type = "ValueList"
         param19.filter.list = ['NA','aeolian']
         param19.value = 'NA'
+        param19.category = "Additional attributes"
 
         # 21st parameter
         param20 = arcpy.Parameter(
@@ -295,7 +309,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
             direction="Input")
 
         param20.value = 'NA'
-        param20.category = "Geomorphology analyst"
+        param20.category = "Analyst Info"
 
         # 22nd parameter
         param21 = arcpy.Parameter(
@@ -306,7 +320,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
             direction="Input")
         
         param21.value = "anonymous"
-        param21.category = "Geomorphology analyst"
+        param21.category = "Analyst Info"
 
         # 23rd parameter
         param22 = arcpy.Parameter(
@@ -315,8 +329,8 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
             datatype="GPString",
             parameterType="Required",
             direction="Input")
-        param22.value = 'Geoscience Australia'
-        param22.category = "Geomorphology analyst"
+        param22.value = 'NA'
+        param22.category = "Analyst Info"
 
         # 23rd parameter
         param23 = arcpy.Parameter(
@@ -372,7 +386,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         # basically we want to update the drop-down lists based on certain selections
         if parameters[3].value:
             if parameters[3].value == 'Current-induced':
-                parameters[4].filter.list = ['NA','Unknown'] + sorted(['current-induced channel','chute channel',
+                parameters[4].filter.list = ['NA','Unknown'] + sorted(['Current-induced channel','chute channel',
                                                                        'oxbow','plunge pool','knickpoint','bedform',
                                                                        'barform'])
                 # the following two lists are available only when the 'Current-induced" setting is selected
@@ -385,43 +399,43 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
                                                              'linguoid crests','lunate crests','crescent'])
                 helper.do_current_induced(parameters)
             elif parameters[3].value == 'Coastal':
-                parameters[4].filter.list = ['NA','Unknown'] + sorted(['coastal subaerial valley','floodplain terrace',
-                                                                       'channel ledge','floodplain','coastal delta',
-                                                                       'delta lobe','channel belt','subaerial channel',
+                parameters[4].filter.list = ['NA','Unknown'] + sorted(['Coastal subaerial valley','floodplain terrace',
+                                                                       'channel ledge','floodplain','Coastal delta','Coastal fan-delta',
+                                                                       'Coastal delta lobe','channel belt','subaerial channel',
                                                                        'barrier complex','barrier system','barrier',
                                                                        'beach ridge','chenier ridge','beachface',
                                                                        'foreshore','shoreface','back barrier',
                                                                        'tidal flat','lagoon','beach','raised beach',
-                                                                       'rocky coast','coastal barform',
-                                                                       'current-induced channel','chute channel','oxbow',
+                                                                       'rocky coast','Coastal barform',
+                                                                       'Current-induced channel','chute channel','oxbow',
                                                                        'plunge pool','knickpoint','bedform','barform'])
                 # the Coastal, Marine and Fluvial settings include the Current-induced setting.
                 # The update of the param7 and param8 occur in the corresponding do_ functions.
                 helper.do_coastal(parameters)                
             elif parameters[3].value == 'Fluvial':
                 parameters[4].filter.list = ['NA','Unknown'] + sorted(['drainage basin','catchment','drainage network',
-                                                                       'fluvial fan','fluvial fan lobe',
-                                                                       'fluvial subaerial valley',
+                                                                       'Fluvial fan','Fluvial fan lobe','Fluvial fan-delta',
+                                                                       'Fluvial subaerial valley',
                                                                        'floodplain terrace','channel ledge','floodplain',
-                                                                       'fluvial delta','delta lobe','channel belt',
-                                                                       'subaerial channel','current-induced channel',
+                                                                       'Fluvial delta','Fluvial delta lobe','channel belt',
+                                                                       'subaerial channel','Current-induced channel',
                                                                        'chute channel','oxbow','plunge pool',
                                                                        'knickpoint','bedform','barform'])
 
                 helper.do_fluvial(parameters)
             elif parameters[3].value == 'Marine':
-                parameters[4].filter.list = ['NA','Unknown'] + sorted(['marine barform','submarine channel',
+                parameters[4].filter.list = ['NA','Unknown'] + sorted(['Marine barform','submarine channel',
                                                                        'submarine channel belt','submarine gully',
                                                                        'submarine valley','canyon mouth','canyon head',
                                                                        'submarine canyon','submarine tributary canyon',
-                                                                       'submarine fan','submarine terrace','marine reef',
-                                                                       'current-induced channel','chute channel','oxbow',
+                                                                       'submarine fan','submarine terrace','Marine reef',
+                                                                       'Current-induced channel','chute channel','oxbow',
                                                                        'plunge pool','knickpoint','bedform','barform'])
 
                 helper.do_marine(parameters)                
             elif parameters[3].value == 'Glacial':
                 parameters[4].filter.list = ['NA','Unknown'] + sorted(['U-shaped valley','cross-shelf trough',
-                                                                       'glacial fjord','sill/threshold','glacial basin',
+                                                                       'Glacial fjord','sill/threshold','Glacial basin',
                                                                        'streamlined landform','Rogen (ribbed) moraine',
                                                                        'meltwater channel','tunnel valley',
                                                                        'glacitectonic raft','thrust-block moraine',
@@ -457,7 +471,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
 
                 helper.do_solidEarth(parameters)
             elif parameters[3].value == 'Biogenic':
-                parameters[4].filter.list = ['NA','Unknown'] + sorted(['biogenic reef','fore-reef','reef crest',
+                parameters[4].filter.list = ['NA','Unknown'] + sorted(['Biogenic reef','fore-reef','reef crest',
                                                                        'reef flat','back reef','reef lagoon',
                                                                        'spur-and-groove','biostrome','bed','bioherm',
                                                                        'mound','mat','excavation'])
@@ -477,8 +491,8 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
                                                                        'head scarp','headwall','lateral scarp','sidewall',
                                                                        'minor scarp','secondary escarpment','talus fan',
                                                                        'debris fan','mudflow fan','turbidite fan',
-                                                                       'mass-movement toe','extensional ridge',
-                                                                       'mass-movement compressional ridge',
+                                                                       'Mass-movement toe','extensional ridge',
+                                                                       'Mass-movement compressional ridge',
                                                                        'transverse ridge','turbidite levee'])
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
@@ -489,10 +503,10 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
                                                                        'mud volcano','caldera (mud volcano)','crater',
                                                                        'gryphon (mud volcano)','moat (mud volcano)',
                                                                        'subsidence rim','mudflow (mud volcano)',
-                                                                       'ring fault',
+                                                                       'ring fault (mud volcano)',
                                                                        'outcropping methane-derived authigenic carbonate (MDAC)',
                                                                        'pingo','blow-out crater',
-                                                                       'permafrost pingo depression ','pockmark'])
+                                                                       'collapsed pingo','pockmark'])
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
 
@@ -509,8 +523,17 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
                 helper.do_anthropogenic(parameters)
             else:
                 parameters[4].filter.list = ['NA','Unknown']
+                parameters[5].filter.list = ['NA','Unknown']
+                parameters[6].filter.list = ['NA','Unknown']
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
+        
+
+        if parameters[4].value in ['NA','Unknown']:
+            parameters[5].filter.list = ['NA','Unknown']
+            parameters[6].filter.list = ['NA','Unknown']
+            parameters[7].filter.list = ['NA']
+            parameters[8].filter.list = ['NA']
                 
         return
 
@@ -554,6 +577,9 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         workspaceName = inFeatClass[0:inFeatClass.rfind("/")] 
         env.workspace=workspaceName
         env.overwriteOutput = True
+        # get Python toolbox home directory
+        toolbox_path = os.path.dirname(__file__)
+        toolbox_path = helper.convert_backslash_forwardslash(toolbox_path)          
 
         
 
@@ -565,8 +591,16 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         valueList.append(setting_process)
         BGU = parameters[4].valueAsText
         valueList.append(BGU)
+        # get BGU code
+        BGU_code = helper.getBGUCode(toolbox_path,setting_process,BGU)
+        valueList.append(BGU_code)
+        
         BGU_T = parameters[5].valueAsText
         valueList.append(BGU_T)
+        # get BGU_T code
+        BGUT_code = helper.getBGUTCode(toolbox_path,setting_process,BGU,BGU_T)
+        valueList.append(BGUT_code)
+        
         BGU_sT = parameters[6].valueAsText
         valueList.append(BGU_sT)
         process = parameters[7].valueAsText
@@ -657,13 +691,22 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
 
         
         # display the number of selected feature for the active layer
-        result = arcpy.GetCount_management(lyr)
-        arcpy.AddMessage(result[0] + ' features selected')
+        selectedNo = arcpy.GetCount_management(lyr)
+        totalNo = arcpy.GetCount_management(inFeatClass)
+        arcpy.AddMessage(selectedNo[0] + ' out of ' + totalNo[0] + ' features selected')
+
+        # throw warning message and stop tool when all features are selected
+        if selectedNo[0] == totalNo[0]:
+            messages.addErrorMessage("Warning! You cannot use the tool when all features are selected. This is to prevent accidentally overiding the existing attributes.")
+            messages.addErrorMessage("If you do want to assign all features the same attribute values, first, select a subset of features and run the tool; then switch the selection and run the tool again.")
+            raise arcpy.ExecuteError
+            
+        
         # add these geomorphology attribute fields
         fields = arcpy.ListFields(inFeatClass)
         field_names = [f.name for f in fields]
         # a list of attributes to be added and calculated
-        fieldList = ['PhysiogSetting','GeomorphSetting','Basic_Geom_Unit','BGU_T','BGU_sT','ProcessAttribute',
+        fieldList = ['PhysiogSetting','GeomorphSetting','Basic_Geom_Unit','BGU_code','BGU_T','BGU_T_code','BGU_sT','ProcessAttribute',
                      'GeometricAttribute','Grouping','Age','StratPosition','SeaLevel','Lithology','MeanGrainSize',
                      'FolkTexture','GravelSandMudContents','TerrianAttributes','ProcessClass','AeolianInput',
                      'Comments','GeomorphAnalystName','GeomorphAnalystOrganisation']
@@ -724,12 +767,12 @@ class helpers(object):
     def do_current_induced(self,parameters):                
         if parameters[4].value:
             if parameters[4].value == 'bedform':
-                parameters[5].filter.list = ['NA','Unknown'] + sorted(['scour','current-induced furrow',
-                                                                       'obstacle and comet scour','cyclic step','dune',
+                parameters[5].filter.list = ['NA','Unknown'] + sorted(['scour','Current-induced furrow',
+                                                                       'obstacle and scour','cyclic step','dune',
                                                                        'sediment wave','sediment ridge','megaripple',
                                                                        'ripple','plane bed','sediment streak',
                                                                        'sediment ribbon','lineation',
-                                                                       'current-induced crag and tail','lag'])
+                                                                       'Current-induced crag and tail','lag'])
             elif parameters[4].value == 'barform':
                 parameters[5].filter.list = ['NA','Unknown'] + sorted(['pointbar','counterpoint bar','scroll bar',
                                                                        'mid-channel bar','bank-attached',
@@ -742,7 +785,7 @@ class helpers(object):
             if parameters[5].value == 'cyclic step':
                 parameters[6].filter.list = ['NA','Unknown','aggradational','non-aggradational']
             elif parameters[5].value in ['dune','sediment wave','sediment ridge','megaripple']:
-                parameters[6].filter.list = ['NA','Unknown'] + sorted(['foredune','coastal dune','linear','transverse',
+                parameters[6].filter.list = ['NA','Unknown'] + sorted(['foredune','Coastal dune','linear','transverse',
                                                                        'star','barchan','trochoidal','lunette','dome',
                                                                        'antidune','parabolic','nebkha','lee','climbing',
                                                                        'blowout','jökulhlaup dunes',
@@ -757,23 +800,19 @@ class helpers(object):
 
     def do_coastal(self,parameters):
         if parameters[4].value:
-            if parameters[4].value == 'coastal subaerial valley':
-                parameters[5].filter.list = ['NA','Unknown'] + sorted(['coastal incised valley','ria','coastal fjord'])
+            if parameters[4].value == 'Coastal subaerial valley':
+                parameters[5].filter.list = ['NA','Unknown'] + sorted(['Coastal incised valley','ria','Coastal fjord'])
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
-            elif parameters[4].value == 'floodplain terrace':
-                parameters[5].filter.list = ['NA','Unknown','strath']
+            elif parameters[4].value in ['floodplain','floodplain terrace','channel ledge']:
+                parameters[5].filter.list = ['NA','Unknown'] + sorted(['strath','alluvial','high-energy floodplain',
+                                             'medium-energy floodplain',
+                                             'low-energy floodplain'])
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
-            elif parameters[4].value == 'floodplain':
-                parameters[5].filter.list = ['NA','Unknown'] + sorted(['high-energy confined floodplain',
-                                             'medium-energy unconfined floodplain',
-                                             'low-energy cohesive floodplain'])
-                parameters[7].filter.list = ['NA']
-                parameters[8].filter.list = ['NA']
-            elif parameters[4].value in ['coastal delta','delta lobe']:
-                parameters[5].filter.list = ['NA','Unknown'] + sorted(['upper','lower','coastal delta-front',
-                                                                       'coastal pro-delta','bayhead','shelf edge',
+            elif parameters[4].value in ['Coastal delta','Coastal delta lobe', 'Coastal fan-delta']:
+                parameters[5].filter.list = ['NA','Unknown'] + sorted(['upper','lower','Coastal delta-front',
+                                                                       'Coastal pro-delta','bayhead','shelf edge',
                                                                        'tidal delta'])
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
@@ -809,26 +848,30 @@ class helpers(object):
             elif parameters[4].value == 'rocky coast':
                 parameters[5].filter.list = ['NA','Unknown'] + sorted(['outcrop','plunging cliff','cliff',
                                                                        'toe (rocky coast)','shore platform','notch',
-                                                                       'stack','arch','pool','lapies','marine karren',
+                                                                       'stack','arch','pool','lapies','Marine karren',
                                                                        'cave','ramp','pothole',
                                                                        'furrow (rocky coast)','rampart'])
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
-            elif parameters[4].value == 'coastal barform':
+            elif parameters[4].value == 'Coastal barform':
                 parameters[5].filter.list = ['NA','Unknown'] + sorted(['nearshore bar','berm','shoreface terrace',
-                                                                       'intertidal terrace','marine terrace',
+                                                                       'intertidal terrace','Marine terrace',
                                                                        'beach cusp','crescentic bar','ridge and runnel',
                                                                        'washover bar','intertidal bar','ridgebar',
                                                                        'tidal bar'])
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
+            elif parameters[4].value == 'shoreface':
+                parameters[5].filter.list = ['NA','Unknown'] + sorted(['upper','lower'])
+                parameters[7].filter.list = ['NA']
+                parameters[8].filter.list = ['NA']
             elif parameters[4].value == 'bedform':
-                parameters[5].filter.list = ['NA','Unknown'] + sorted(['scour','current-induced furrow',
-                                                                       'obstacle and comet scour','cyclic step','dune',
+                parameters[5].filter.list = ['NA','Unknown'] + sorted(['scour','Current-induced furrow',
+                                                                       'obstacle and scour','cyclic step','dune',
                                                                        'sediment wave','sediment ridge','megaripple',
                                                                        'ripple','plane bed','sediment streak',
                                                                        'sediment ribbon','lineation',
-                                                                       'current-induced crag and tail','lag'])
+                                                                       'Current-induced crag and tail','lag'])
                 parameters[7].filter.list = ['NA'] + sorted(['erosional','accretionary/aggradational',
                                                              'unidirectional flow','bidirectional flow','interference',
                                                              'constrained flow','open flow','tidal current',
@@ -848,7 +891,7 @@ class helpers(object):
                 parameters[8].filter.list = ['NA'] + sorted(['2D','3D','primary','secondary','compound','longitudinal',
                                                              'transverse','oblique','straight crests','sinuous crests',
                                                              'linguoid crests','lunate crests','crescent'])
-            elif parameters[4].value in ['current-induced channel','chute channel','oxbow','plunge pool','knickpoint']:
+            elif parameters[4].value in ['Current-induced channel','chute channel','oxbow','plunge pool','knickpoint']:
                 parameters[5].filter.list = ['NA','Unknown']
                 parameters[7].filter.list = ['NA'] + sorted(['erosional','accretionary/aggradational',
                                                              'unidirectional flow','bidirectional flow','interference',
@@ -862,8 +905,8 @@ class helpers(object):
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
         if parameters[5].value:
-            if parameters[5].value == 'coastal incised valley':
-                parameters[6].filter.list = ['NA','Unknown','coastal plain','cross-shelf']
+            if parameters[5].value == 'Coastal incised valley':
+                parameters[6].filter.list = ['NA','Unknown','Coastal plain','cross-shelf']
             elif parameters[5].value in ['river','creek','distributary']:
                 parameters[6].filter.list = ['NA','Unknown'] + sorted(['straight','meandering','braided','anabranching'])
             elif parameters[5].value == 'barrier spit':
@@ -872,7 +915,7 @@ class helpers(object):
             elif parameters[5].value == 'cyclic step':
                 parameters[6].filter.list = ['NA','Unknown','aggradational','non-aggradational']
             elif parameters[5].value in ['dune','sediment wave','sediment ridge','megaripple']:
-                parameters[6].filter.list = ['NA','Unknown'] + sorted(['foredune','coastal dune','linear','transverse',
+                parameters[6].filter.list = ['NA','Unknown'] + sorted(['foredune','Coastal dune','linear','transverse',
                                                                        'star','barchan','trochoidal','lunette','dome',
                                                                        'antidune','parabolic','nebkha','lee','climbing',
                                                                        'blowout','jökulhlaup dunes',
@@ -893,22 +936,18 @@ class helpers(object):
                                                                        'annular'])
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
-            elif parameters[4].value == 'fluvial subaerial valley':
-                parameters[5].filter.list = ['NA','Unknown'] + sorted(['fluvial incised valley','river valley'])
+            elif parameters[4].value == 'Fluvial subaerial valley':
+                parameters[5].filter.list = ['NA','Unknown'] + sorted(['Fluvial incised valley','river valley'])
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
-            elif parameters[4].value == 'floodplain terrace':
-                parameters[5].filter.list = ['NA', 'Unknown', 'strath']
+            elif parameters[4].value in ['floodplain','floodplain terrace','channel ledge']:
+                parameters[5].filter.list = ['NA', 'Unknown'] + sorted(['strath','alluvial','high-energy floodplain',
+                                                                        'medium-energy floodplain',
+                                                                        'low-energy floodplain'])
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
-            elif parameters[4].value == 'floodplain':
-                parameters[5].filter.list = ['NA', 'Unknown'] + sorted(['high-energy confined floodplain',
-                                                                        'medium-energy unconfined floodplain',
-                                                                        'low-energy cohesive floodplain'])
-                parameters[7].filter.list = ['NA']
-                parameters[8].filter.list = ['NA']
-            elif parameters[4].value in ['fluvial delta','delta lobe']:
-                parameters[5].filter.list = ['NA','Unknown','fluvial delta-front','fluvial pro-delta']
+            elif parameters[4].value in ['Fluvial delta','Fluvial delta lobe']:
+                parameters[5].filter.list = ['NA','Unknown','Fluvial delta-front','Fluvial pro-delta']
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
             elif parameters[4].value == 'subaerial channel':
@@ -917,12 +956,12 @@ class helpers(object):
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
             elif parameters[4].value == 'bedform':
-                parameters[5].filter.list = ['NA','Unknown'] + sorted(['scour','current-induced furrow',
-                                                                       'obstacle and comet scour','cyclic step','dune',
+                parameters[5].filter.list = ['NA','Unknown'] + sorted(['scour','Current-induced furrow',
+                                                                       'obstacle and scour','cyclic step','dune',
                                                                        'sediment wave','sediment ridge','megaripple',
                                                                        'ripple','plane bed','sediment streak',
                                                                        'sediment ribbon','lineation',
-                                                                       'current-induced crag and tail','lag'])
+                                                                       'Current-induced crag and tail','lag'])
                 parameters[7].filter.list = ['NA'] + sorted(['erosional','accretionary/aggradational',
                                                              'unidirectional flow','bidirectional flow','interference',
                                                              'constrained flow','open flow','tidal current',
@@ -942,7 +981,7 @@ class helpers(object):
                 parameters[8].filter.list = ['NA'] + sorted(['2D','3D','primary','secondary','compound','longitudinal',
                                                              'transverse','oblique','straight crests','sinuous crests',
                                                              'linguoid crests','lunate crests','crescent'])
-            elif parameters[4].value in ['current-induced channel','chute channel','oxbow','plunge pool','knickpoint']:
+            elif parameters[4].value in ['Current-induced channel','chute channel','oxbow','plunge pool','knickpoint']:
                 parameters[5].filter.list = ['NA','Unknown']
                 parameters[7].filter.list = ['NA'] + sorted(['erosional','accretionary/aggradational',
                                                              'unidirectional flow','bidirectional flow','interference',
@@ -956,14 +995,14 @@ class helpers(object):
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
         if parameters[5].value:
-            if parameters[5].value == 'fluvial incised valley':
-                parameters[6].filter.list = ['NA','Unknown','coastal plain','cross-shelf']
+            if parameters[5].value == 'Fluvial incised valley':
+                parameters[6].filter.list = ['NA','Unknown','Coastal plain','cross-shelf']
             elif parameters[5].value in ['river','creek','distributary']:
                 parameters[6].filter.list = ['NA','Unknown'] + sorted(['straight','meandering','braided','anabranching'])
             elif parameters[5].value == 'cyclic step':
                 parameters[6].filter.list = ['NA','Unknown','aggradational','non-aggradational']
             elif parameters[5].value in ['dune','sediment wave','sediment ridge','megaripple']:
-                parameters[6].filter.list = ['NA','Unknown'] + sorted(['foredune','coastal dune','linear','transverse',
+                parameters[6].filter.list = ['NA','Unknown'] + sorted(['foredune','Coastal dune','linear','transverse',
                                                                        'star','barchan','trochoidal','lunette','dome',
                                                                        'antidune','parabolic','nebkha','lee','climbing',
                                                                        'blowout','jökulhlaup dunes',
@@ -978,7 +1017,7 @@ class helpers(object):
 
     def do_marine(self,parameters):
         if parameters[4].value:
-            if parameters[4].value == 'marine barform':
+            if parameters[4].value == 'Marine barform':
                 parameters[5].filter.list = ['NA','Unknown'] + sorted(['sediment apron','sediment lobe','sediment drift',
                                                                        'contourite drift','sediment bank',
                                                                        'sediment ridge'])
@@ -990,12 +1029,12 @@ class helpers(object):
                 parameters[7].filter.list = ['NA']
                 parameters[8].filter.list = ['NA']
             elif parameters[4].value == 'bedform':
-                parameters[5].filter.list = ['NA','Unknown'] + sorted(['scour','current-induced furrow',
-                                                                       'obstacle and comet scour','cyclic step','dune',
+                parameters[5].filter.list = ['NA','Unknown'] + sorted(['scour','Current-induced furrow',
+                                                                       'obstacle and scour','cyclic step','dune',
                                                                        'sediment wave','sediment ridge','megaripple',
                                                                        'ripple','plane bed','sediment streak',
                                                                        'sediment ribbon','lineation',
-                                                                       'current-induced crag and tail','lag'])
+                                                                       'Current-induced crag and tail','lag'])
                 parameters[7].filter.list = ['NA'] + sorted(['erosional','accretionary/aggradational',
                                                              'unidirectional flow','bidirectional flow','interference',
                                                              'constrained flow','open flow','tidal current',
@@ -1015,7 +1054,7 @@ class helpers(object):
                 parameters[8].filter.list = ['NA'] + sorted(['2D','3D','primary','secondary','compound','longitudinal',
                                                              'transverse','oblique','straight crests','sinuous crests',
                                                              'linguoid crests','lunate crests','crescent'])
-            elif parameters[4].value in ['current-induced channel','chute channel','oxbow','plunge pool','knickpoint']:
+            elif parameters[4].value in ['Current-induced channel','chute channel','oxbow','plunge pool','knickpoint']:
                 parameters[5].filter.list = ['NA','Unknown']
                 parameters[7].filter.list = ['NA'] + sorted(['erosional','accretionary/aggradational',
                                                              'unidirectional flow','bidirectional flow','interference',
@@ -1034,7 +1073,7 @@ class helpers(object):
             elif parameters[5].value == 'cyclic step':
                 parameters[6].filter.list = ['NA','Unknown','aggradational','non-aggradational']
             elif parameters[5].value in ['dune','sediment wave','sediment ridge','megaripple']:
-                parameters[6].filter.list = ['NA','Unknown'] + sorted(['foredune','coastal dune','linear','transverse',
+                parameters[6].filter.list = ['NA','Unknown'] + sorted(['foredune','Coastal dune','linear','transverse',
                                                                        'star','barchan','trochoidal','lunette','dome',
                                                                        'antidune','parabolic','nebkha','lee','climbing',
                                                                        'blowout','jökulhlaup dunes',
@@ -1053,7 +1092,7 @@ class helpers(object):
                 parameters[5].filter.list = ['NA','Unknown','hanging valley','valley/trough head']
             elif parameters[4].value == 'streamlined landform':
                 parameters[5].filter.list = ['NA','Unknown'] + sorted(['roche moutonnée','whaleback',
-                                                                       'glacial crag and tail',
+                                                                       'Glacial crag and tail',
                                                                        'mega-scale glacial lineation','bundle structure',
                                                                        'drumlin','flute','groove'])
             elif parameters[4].value == 'hill-hole pair':
@@ -1084,7 +1123,9 @@ class helpers(object):
     def do_solidEarth(self,parameters):
         if parameters[4].value:
             if parameters[4].value == 'volcano (island or submarine)':
-                parameters[5].filter.list = ['NA','Unknown'] + sorted(['seamount','shield volcano','stratovolcano'])
+                parameters[5].filter.list = ['NA','Unknown'] + sorted(['shield volcano','stratovolcano'])
+            elif parameters[4].value == 'guyot':
+                parameters[5].filter.list = ['NA','Unknown','volcanic','non-volcanic']
             elif parameters[4].value == 'bedrock outcrop (undefined)':
                 parameters[5].filter.list = ['NA','Unknown','bedded','foliated','massive']
             elif parameters[4].value == 'magmatic outcrop':
@@ -1130,33 +1171,25 @@ class helpers(object):
 
     def do_biogenic(self,parameters):
         if parameters[4].value:
-            if parameters[4].value == 'biogenic reef':
+            if parameters[4].value == 'Biogenic reef':
                 parameters[5].filter.list = ['NA','Unknown'] + sorted(['cold-water-coral-reef','coralligène',
                                                                        'coralligène bank','coralligène rim','patch reef',
                                                                        'fringing reef','barrier reef','atoll',
                                                                        'platform reef',
-                                                                       'juvenile - unmodified antecedent platform',
+                                                                       'juvenile reef - unmodified antecedent platform',
                                                                        'juvenile reef - submerged shoals',
                                                                        'juvenile reef - irregular patch reefs',
-                                                                       'crescentic reef - mature',
-                                                                       'lagoonal reef - mature','planar reef - senile',])
+                                                                       'mature reef - crescentic',
+                                                                       'mature reef - lagoonal','senile reef - planar'])
             elif parameters[4].value in ['fore-reef','reef crest','reef flat','back reef','reef lagoon',
                                          'spur-and-groove']:
                 parameters[5].filter.list = ['NA','Unknown'] + sorted(['patch reef','fringing reef','barrier reef',
-                                                                       'atoll','platform reef',
-                                                                       'juvenile - unmodified antecedent platform',
-                                                                       'juvenile reef - submerged shoals',
-                                                                       'juvenile reef - irregular patch reefs',
-                                                                       'crescentic reef - mature',
-                                                                       'lagoonal reef - mature','planar reef - senile',])
-            elif parameters[4].value == 'biostrome':
-                parameters[5].filter.list = ['NA','Unknown','ribbon','sheet']
+                                                                       'atoll','platform reef'])
+            
             elif parameters[4].value in ['bioherm','mound']:
                 parameters[5].filter.list = ['NA','Unknown'] + sorted(['lenticular','reticulate','annulate/annular',
                                                                        'agglutinating'])
-            elif parameters[4].value == 'mat':
-                parameters[5].filter.list = ['NA','Unknown','aggregation','sediment trapped/bound']
-            elif parameters[4].value == 'bed':
+            elif parameters[4].value in ['bed','biostrome','mat']:
                 parameters[5].filter.list = ['NA','Unknown'] + sorted(['ribbon','sheet','aggregation',
                                                                        'sediment trapped/bound'])
             elif parameters[4].value == 'excavation':
@@ -1165,13 +1198,11 @@ class helpers(object):
             else:
                 parameters[5].filter.list = ['NA','Unknown']
         if parameters[5].value:
-            if parameters[5].value in ['cold-water-coral-reef','coralligène','coralligène bank','coralligène rim',
-                                       'patch reef','fringing reef','barrier reef','atoll','platform reef',
-                                       'juvenile - unmodified antecedent platform',
-                                       'juvenile reef - submerged shoals',
-                                       'juvenile reef - irregular patch reefs','crescentic reef - mature',
-                                       'lagoonal reef - mature','planar reef - senile','ribbon','sheet',
-                                       'lenticular','reticulate','annulate/annular']:
+            if parameters[5].value in ['cold-water-coral-reef','coralligène','coralligène bank','coralligène rim','patch reef',
+                                       'fringing reef','barrier reef','atoll','platform reef',
+                                       'juvenile reef - unmodified antecedent platform','juvenile reef - submerged shoals',
+                                       'juvenile reef - irregular patch reefs','mature reef - crescentic','mature reef - lagoonal',
+                                       'senile reef - planar','ribbon','sheet','lenticular','reticulate','annulate/annular']:
                 parameters[6].filter.list = ['NA','Unknown'] + sorted(['cold-water-corals','coralline (red) algae',
                                                                        'bryozoa','foraminifera','vermetid','serpulid',
                                                                        'bivalve','brachiopod','sponge','hermatypic corals',
@@ -1289,3 +1320,39 @@ class helpers(object):
                 parameters[6].filter.list = ['NA','Unknown']
 
         return
+
+    def getBGUCode(self,path,setting,BGU):
+        # The Current-induced setting is a subset of Coastal, Fluvial and Marine settings.
+        # In case that you select either Coastal or Fluvial or Marine setting, then one of the Current-induced BGU listed below, the setting value needs to be set as Current-induced to get the correct BGU code 
+        if BGU in ['Current-induced channel','barform','bedform','chute channel','knickpoint','oxbow','plunge pool']:
+            setting = 'Current-induced'
+
+        if BGU == 'NA': # assign BGU code for NA
+            BGU_code = 'NA01'
+        elif BGU == 'Unknown': # assign BGU code for Unknown
+            BGU_code = 'Un01'
+        else:            
+            csvFile = path + '/' + 'BGU_codes.csv'
+            bguPD = pd.read_csv(csvFile,header=0,sep=',')
+            BGU_code = bguPD[(bguPD.SETTING == setting) & (bguPD.BGU == BGU)].Suggested_BGU_Code.values[0]
+        return BGU_code
+
+
+    def getBGUTCode(self,path,setting,BGU,BGU_T):
+        # get BGU code
+        BGU_code = self.getBGUCode(path,setting,BGU)
+		
+        if BGU in ['Current-induced channel','barform','bedform','chute channel','knickpoint','oxbow','plunge pool']:
+            setting = 'Current-induced'
+			
+        if BGU_T == 'NA': # assign BGUT code for NA
+            BGUT_code = BGU_code + 'Na'
+        elif BGU_T == 'Unknown': # assign BGUT code for Unknown
+            BGUT_code = BGU_code + 'Un'
+        else:
+            csvFile = path + '/' + 'BGUT_codes.csv'
+            bgutPD = pd.read_csv(csvFile,header=0,sep=',')
+            BGUT_code = bgutPD[(bgutPD.SETTING == setting) & (bgutPD.BGU == BGU) & (bgutPD.BGUT == BGU_T)].Suggested_BGUT_Code.values[0]
+        return BGUT_code
+        
+        

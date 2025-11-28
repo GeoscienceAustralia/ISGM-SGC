@@ -1,0 +1,366 @@
+﻿SETTING,BGU,BGUT,BGUT_Code,Comment,Suggested_BGUT_Code
+Anthropogenic,archaeological,cultural site,An03Cs,,An03Cs
+Anthropogenic,archaeological,historical wreck,An03Hw,,An03Hw
+Anthropogenic,archaeological,other archaeological,An03Oa,,An03Oa
+Anthropogenic,disturbance,anchor drag,An01Ad,,An01Ad
+Anthropogenic,disturbance,bottom trawl,An01Bt,,An01Bt
+Anthropogenic,disturbance,dredge scour,An01Ds,,An01Ds
+Anthropogenic,disturbance,dredge spoil,An01Dl,,An01Dl
+Anthropogenic,disturbance,mine tailings,An01Mt,,An01Mt
+Anthropogenic,disturbance,other disturbance,An01Od,,An01Od
+Anthropogenic,structure,artificial reef,An02Ar,,An02Ar
+Anthropogenic,structure,cable,An02Ce,,An02Ce
+Anthropogenic,structure,coastal management structure,An02Cm,,An02Cm
+Anthropogenic,structure,debris,An02Ds,,An02Ds
+Anthropogenic,structure,fish farm,An02Ff,,An02Ff
+Anthropogenic,structure,fish trap,An02Ft,,An02Ft
+Anthropogenic,structure,foundations and moorings,An02Fm,,An02Fm
+Anthropogenic,structure,mine,An02Me,,An02Me
+Anthropogenic,structure,other structure,An02Os,,An02Os
+Anthropogenic,structure,pipeline,An02Pe,,An02Pe
+Anthropogenic,structure,rubbish discharge,An02Rd,,An02Rd
+Anthropogenic,structure,wreck,An02Wk,,An02Wk
+Biogenic,bed,aggregation,Bi06At,,Bi06At
+Biogenic,bed,ribbon,Bi10Rb,"should be Bi06, due to change in the tree",Bi06Rb
+Biogenic,bed,sediment trapped/bound,Bi06Sb,,Bi06Sb
+Biogenic,bed,sheet,Bi10Sh,"should be Bi06, due to change in the tree",Bi06Sh
+Biogenic,mat,aggregation,Bi06At,,Bi06At
+Biogenic,mat,sediment trapped/bound,Bi06Sb,,Bi06Sb
+Biogenic,mat,ribbon,Bi06xx,change in the tree,Bi06Rb
+Biogenic,mat,sheet,Bi06xx,change in the tree,Bi06Sh
+Biogenic,biostrome,ribbon,Bi10Rb,"should be Bi06, biostrome is aka of bed and mat",Bi06Rb
+Biogenic,biostrome,sheet,Bi10Sh,"should be Bi06, biostrome is aka of bed and mat",Bi06Sh
+Biogenic,biostrome,aggregation,Bi06xx,change in the tree,Bi06At
+Biogenic,biostrome,sediment trapped/bound,Bi06xx,change in the tree,Bi06Sb
+Biogenic,Biogenic reef,atoll,Bi02Al,,Bi02Al
+Biogenic,Biogenic reef,barrier reef,Bi02Br,,Bi02Br
+Biogenic,Biogenic reef,cold-water-coral-reef,Bi02Cw,,Bi02Cw
+Biogenic,Biogenic reef,coralligène,Bi02Ce,,Bi02Ce
+Biogenic,Biogenic reef,coralligène bank,Bi02Cb,,Bi02Cb
+Biogenic,Biogenic reef,coralligène rim,Bi02Cr,,Bi02Cr
+Biogenic,Biogenic reef,mature reef - crescentic,Bi02Cf,BGUT name changed,Bi02Mc
+Biogenic,Biogenic reef,fringing reef,Bi02Fr,,Bi02Fr
+Biogenic,Biogenic reef,juvenile reef - unmodified antecedent platform,Bi02Ju,BGUT name changed,Bi02Ju
+Biogenic,Biogenic reef,juvenile reef - irregular patch reefs,Bi02Jr,,Bi02Jr
+Biogenic,Biogenic reef,juvenile reef - submerged shoals,Bi02Js,,Bi02Js
+Biogenic,Biogenic reef,mature reef - lagoonal,Bi02Lm,BGUT name changed,Bi02Ml
+Biogenic,Biogenic reef,patch reef,Bi02Pr,,Bi02Pr
+Biogenic,Biogenic reef,senile reef - planar,Bi02Ps,BGUT name changed,Bi02Sp
+Biogenic,Biogenic reef,platform reef,Bi02Pf,,Bi02Pf
+Biogenic,fore-reef,atoll,Bi05xx,change in the tree,Bi05Al
+Biogenic,fore-reef,barrier reef,Bi05xx,change in the tree,Bi05Br
+Biogenic,fore-reef,fringing reef,Bi05xx,change in the tree,Bi05Fr
+Biogenic,fore-reef,patch reef,Bi05xx,change in the tree,Bi05Pr
+Biogenic,fore-reef,platform reef,Bi05xx,change in the tree,Bi05Pf
+Biogenic,reef crest,atoll,Bi07xx,change in the tree,Bi07Al
+Biogenic,reef crest,barrier reef,Bi07xx,change in the tree,Bi07Br
+Biogenic,reef crest,fringing reef,Bi07xx,change in the tree,Bi07Fr
+Biogenic,reef crest,patch reef,Bi07xx,change in the tree,Bi07Pr
+Biogenic,reef crest,platform reef,Bi07xx,change in the tree,Bi07Pf
+Biogenic,reef flat,atoll,Bi08xx,change in the tree,Bi08Al
+Biogenic,reef flat,barrier reef,Bi08xx,change in the tree,Bi08Br
+Biogenic,reef flat,fringing reef,Bi08xx,change in the tree,Bi08Fr
+Biogenic,reef flat,patch reef,Bi08xx,change in the tree,Bi08Pr
+Biogenic,reef flat,platform reef,Bi08xx,change in the tree,Bi08Pf
+Biogenic,back reef,atoll,Bi03xx,change in the tree,Bi03Al
+Biogenic,back reef,barrier reef,Bi03xx,change in the tree,Bi03Br
+Biogenic,back reef,fringing reef,Bi03xx,change in the tree,Bi03Fr
+Biogenic,back reef,patch reef,Bi03xx,change in the tree,Bi03Pr
+Biogenic,back reef,platform reef,Bi03xx,change in the tree,Bi03Pf
+Biogenic,reef lagoon,atoll,Bi09xx,change in the tree,Bi09Al
+Biogenic,reef lagoon,barrier reef,Bi09xx,change in the tree,Bi09Br
+Biogenic,reef lagoon,fringing reef,Bi09xx,change in the tree,Bi09Fr
+Biogenic,reef lagoon,patch reef,Bi09xx,change in the tree,Bi09Pr
+Biogenic,reef lagoon,platform reef,Bi09xx,change in the tree,Bi09Pf
+Biogenic,spur-and-groove,atoll,Bi11xx,change in the tree,Bi11Al
+Biogenic,spur-and-groove,barrier reef,Bi11xx,change in the tree,Bi11Br
+Biogenic,spur-and-groove,fringing reef,Bi11xx,change in the tree,Bi11Fr
+Biogenic,spur-and-groove,patch reef,Bi11xx,change in the tree,Bi11Pr
+Biogenic,spur-and-groove,platform reef,Bi11xx,change in the tree,Bi11Pf
+Biogenic,bioherm,agglutinating,Bi01Ag,,Bi01Ag
+Biogenic,bioherm,annulate/annular,Bi01Aa,,Bi01Aa
+Biogenic,bioherm,lenticular,Bi01Lr,,Bi01Lr
+Biogenic,bioherm,reticulate,Bi01Re,,Bi01Re
+Biogenic,mound,agglutinating,Bi01Ag,,Bi01Ag
+Biogenic,mound,annulate/annular,Bi01Aa,,Bi01Aa
+Biogenic,mound,lenticular,Bi01Lr,,Bi01Lr
+Biogenic,mound,reticulate,Bi01Re,,Bi01Re
+Biogenic,excavation,boring,Bi04Bg,,Bi04Bg
+Biogenic,excavation,burrow,Bi04Bw,,Bi04Bw
+Biogenic,excavation,feeding trace,Bi04Ft,,Bi04Ft
+Biogenic,excavation,mound,Bi04Md,,Bi04Md
+Biogenic,excavation,nest,Bi04Nt,,Bi04Nt
+Biogenic,excavation,resting site,Bi04Rs,,Bi04Rs
+Biogenic,excavation,track,Bi04Tk,,Bi04Tk
+Biogenic,excavation,trail,Bi04Tl,,Bi04Tl
+Coastal,barrier,barrier island,Co03Bi,,Co03Bi
+Coastal,barrier,barrier spit,Co03Bs,,Co03Bs
+Coastal,barrier,bay-mouth barrier,Co03Bm,,Co03Bm
+Coastal,barrier,salient/tombolo,Co03St,,Co03St
+Coastal,barrier complex,chenier plain,Co09Cp,"barrier system is aka of barrier complex, should use same BGUT codes",Co09Cp
+Coastal,barrier complex,strandplain,Co09Sp,,Co09Sp
+Coastal,barrier system,chenier plain,Co09Ch,"barrier system is aka of barrier complex, should use same BGUT codes",Co09Cp
+Coastal,barrier system,strandplain,Co09Sp,,Co09Sp
+Coastal,Coastal barform,beach cusp,Co05Bc,,Co05Bc
+Coastal,Coastal barform,berm,Co05Br,,Co05Br
+Coastal,Coastal barform,crescentic bar,Co05Cb,,Co05Cb
+Coastal,Coastal barform,intertidal bar,Co05Ib,,Co05Ib
+Coastal,Coastal barform,intertidal terrace,Co05St,,Co05St
+Coastal,Coastal barform,marine terrace,Co05St,,Co05St
+Coastal,Coastal barform,nearshore bar,Co05Nb,,Co05Nb
+Coastal,Coastal barform,ridge and runnel,Co05Rl,,Co05Rl
+Coastal,Coastal barform,ridgebar,Co05Ib,,Co05Ib
+Coastal,Coastal barform,shoreface terrace,Co05St,,Co05St
+Coastal,Coastal barform,tidal bar,Co05Tb,,Co05Tb
+Coastal,Coastal barform,washover bar,Co05Wb,,Co05Wb
+Coastal,Coastal subaerial valley,Coastal fjord,Co12Cj,BGUT name changed,Co12Cj
+Coastal,Coastal subaerial valley,Coastal incised valley,Co12Ci,BGUT name changed,Co12Ci
+Coastal,Coastal subaerial valley,ria,Co12Ra,,Co12Ra
+Coastal,Coastal delta,bayhead,Co04Bd,,Co04Bd
+Coastal,Coastal delta,Coastal delta-front,Co04Cd,,Co04Cd
+Coastal,Coastal delta,Coastal pro-delta,Co04Cp,,Co04Cp
+Coastal,Coastal delta,lower,Co04Lr,,Co04Lr
+Coastal,Coastal delta,shelf edge,Co04Se,,Co04Se
+Coastal,Coastal delta,tidal delta,Co04Ta,,Co04Ta
+Coastal,Coastal delta,upper,Co04Ur,,Co04Ur
+Coastal,Coastal delta lobe,bayhead,Co21Bh,,Co21Bh
+Coastal,Coastal delta lobe,Coastal delta-front,Co21Cn,,Co21Cn
+Coastal,Coastal delta lobe,Coastal pro-delta,Co21Cr,,Co21Cr
+Coastal,Coastal delta lobe,lower,Co21Lw,,Co21Lw
+Coastal,Coastal delta lobe,shelf edge,Co21Sg,,Co21Sg
+Coastal,Coastal delta lobe,tidal delta,Co21Td,,Co21Td
+Coastal,Coastal delta lobe,upper,Co21Up,,Co21Up
+Coastal,Coastal fan-delta,bayhead,Coxxxx,new entry,Co22Bh
+Coastal,Coastal fan-delta,Coastal delta-front,Coxxxx,new entry,Co22Cn
+Coastal,Coastal fan-delta,Coastal pro-delta,Coxxxx,new entry,Co22Cr
+Coastal,Coastal fan-delta,lower,Coxxxx,new entry,Co22Lw
+Coastal,Coastal fan-delta,shelf edge,Coxxxx,new entry,Co22Sg
+Coastal,Coastal fan-delta,tidal delta,Coxxxx,new entry,Co22Td
+Coastal,Coastal fan-delta,upper,Coxxxx,new entry,Co22Up
+Coastal,floodplain,high-energy floodplain,Co15Hc,BGUT name changed,Co15Hf
+Coastal,floodplain,low-energy floodplain,Co15Lc,BGUT name changed,Co15Lf
+Coastal,floodplain,medium-energy floodplain,Co15Mu,BGUT name changed,Co15Mf
+Coastal,floodplain,strath,Co15xx,change in the tree,Co15Sh
+Coastal,floodplain,alluvial,Co15xx,new entry,Co15Al
+Coastal,floodplain terrace,strath,Co19Sh,,Co19Sh
+Coastal,floodplain terrace,high-energy floodplain,Co19xx,change in the tree,Co19Hf
+Coastal,floodplain terrace,low-energy floodplain,Co19xx,change in the tree,Co19Lf
+Coastal,floodplain terrace,medium-energy floodplain,Co19xx,change in the tree,Co19Mf
+Coastal,floodplain terrace,alluvial,Co19xx,new entry,Co19Al
+Coastal,channel ledge,strath,Co08xx,change in the tree,Co08Sh
+Coastal,channel ledge,high-energy floodplain,Co08xx,change in the tree,Co08Hf
+Coastal,channel ledge,low-energy floodplain,Co08xx,change in the tree,Co08Lf
+Coastal,channel ledge,medium-energy floodplain,Co08xx,change in the tree,Co08Mf
+Coastal,channel ledge,alluvial,Co08xx,new entry,Co08Al
+Coastal,lagoon,closed lagoon,Co11Cl,,Co11Cl
+Coastal,lagoon,intermittently closed and open lagoon,Co11Ic,,Co11Ic
+Coastal,lagoon,open lagoon,Co11Ol,,Co11Ol
+Coastal,beach,dissipative,Co14De,,Co14De
+Coastal,beach,intermediate,Co14Ie,,Co14Ie
+Coastal,beach,reef or rock affected beach,Co14Rk,,Co14Rk
+Coastal,beach,reflective,Co14Re,,Co14Re
+Coastal,raised beach,dissipative,Co17Ds,,Co17Ds
+Coastal,raised beach,intermediate,Co17It,,Co17It
+Coastal,raised beach,reef or rock affected beach,Co17Rb,,Co17Rb
+Coastal,raised beach,reflective,Co17Rf,,Co17Rf
+Coastal,rocky coast,arch,Co01Ah,,Co01Ah
+Coastal,rocky coast,cave,Co01Ce,,Co01Ce
+Coastal,rocky coast,cliff,Co01Cf,,Co01Cf
+Coastal,rocky coast,furrow (rocky coast),Co01Fw,,Co01Fw
+Coastal,rocky coast,lapies,Co01Ls,,Co01Ls
+Coastal,rocky coast,marine karren,Co01Mk,,Co01Mk
+Coastal,rocky coast,notch,Co01Nh,,Co01Nh
+Coastal,rocky coast,outcrop,Co01Op,,Co01Op
+Coastal,rocky coast,plunging cliff,Co01Pc,,Co01Pc
+Coastal,rocky coast,pool,Co01Pl,,Co01Pl
+Coastal,rocky coast,pothole,Co01Pe,,Co01Pe
+Coastal,rocky coast,ramp,Co01Rp,,Co01Rp
+Coastal,rocky coast,rampart,Co01Rt,,Co01Rt
+Coastal,rocky coast,shore platform,Co01Sm,,Co01Sm
+Coastal,rocky coast,stack,Co01Sk,,Co01Sk
+Coastal,rocky coast,toe (rocky coast),Co01Te,,Co01Te
+Coastal,subaerial channel,creek,Co13Ck,,Co13Ck
+Coastal,subaerial channel,distributary,Co13Dy,,Co13Dy
+Coastal,subaerial channel,gully,Co13Gy,,Co13Gy
+Coastal,subaerial channel,rill,Co13Rl,,Co13Rl
+Coastal,subaerial channel,river,Co13Rv,,Co13Rv
+Coastal,subaerial channel,tidal inlet,Co13Ti,,Co13Ti
+Coastal,tidal flat,intertidal flat,Co16If,,Co16If
+Coastal,tidal flat,subtidal flat,Co16Sf,,Co16Sf
+Coastal,tidal flat,supratidal flat,Co16Sd,,Co16Sd
+Coastal,shoreface,upper,Co18xx,change in the tree,Co18Up
+Coastal,shoreface,lower,Co18xx,change in the tree,Co18Lw
+Current-induced,barform,bank-attached,Ci01Ba,,Ci01Ba
+Current-induced,barform,bench,Ci01Bh,,Ci01Bh
+Current-induced,barform,counterpoint bar,Ci01Cb,,Ci01Cb
+Current-induced,barform,crevasse splay,Ci01Cs,,Ci01Cs
+Current-induced,barform,ledge,Ci01Ld,,Ci01Ld
+Current-induced,barform,levee,Ci01Le,,Ci01Le
+Current-induced,barform,mid-channel bar,Ci01Mb,,Ci01Mb
+Current-induced,barform,mouthbar,Ci01Mr,,Ci01Mr
+Current-induced,barform,pointbar,Ci01Pr,,Ci01Pr
+Current-induced,barform,riffle (and pool),Ci01Re,,Ci01Re
+Current-induced,barform,scroll bar,Ci01Sb,,Ci01Sb
+Current-induced,bedform,Current-induced crag and tail,Ci04Cc,BGUT name changed,Ci04Cc
+Current-induced,bedform,Current-induced furrow,Ci04Cf,BGUT name changed,Ci04Cf
+Current-induced,bedform,cyclic step,Ci04Cp,,Ci04Cp
+Current-induced,bedform,dune,Ci04De,,Ci04De
+Current-induced,bedform,lag,Ci04Lg,,Ci04Lg
+Current-induced,bedform,lineation,Ci04Ln,,Ci04Ln
+Current-induced,bedform,megaripple,Ci04De,,Ci04De
+Current-induced,bedform,obstacle and scour,Ci04Oc,BGUT name changed,Ci04Os
+Current-induced,bedform,plane bed,Ci04Pb,,Ci04Pb
+Current-induced,bedform,ripple,Ci04Rp,,Ci04Rp
+Current-induced,bedform,scour,Ci04Sr,,Ci04Sr
+Current-induced,bedform,sediment ribbon,Ci04Sn,,Ci04Sn
+Current-induced,bedform,sediment ridge,Ci04De,,Ci04De
+Current-induced,bedform,sediment streak,Ci04Ss,,Ci04Ss
+Fluid Flow,hydrothermal vent,black smokers,FF02Bs,,FF02Bs
+Fluid Flow,hydrothermal vent,white smokers,FF02Ws,,FF02Ws
+Fluid Flow,mud volcano,cone,FF10Md,,FF10Md
+Fluid Flow,mud volcano,mud dome,FF10Md,,FF10Md
+Fluid Flow,mud volcano,mud pie,FF10Mp,,FF10Mp
+Fluid Flow,outcropping methane-derived authigenic carbonate (MDAC),MDAC chimney,FF01Mc,,FF01Mc
+Fluid Flow,outcropping methane-derived authigenic carbonate (MDAC),MDAC mounds,FF01Mm,,FF01Mm
+Fluid Flow,outcropping methane-derived authigenic carbonate (MDAC),MDAC pavements,FF01Ms,,FF01Ms
+Fluid Flow,outcropping methane-derived authigenic carbonate (MDAC),MDAC slab,FF01Mb,,FF01Mb
+Fluid Flow,pingo,gas hydrate mound,FF06Gp,,FF06Gp
+Fluid Flow,pingo,gas hydrate pingo,FF06Gp,,FF06Gp
+Fluid Flow,pingo,permafrost pingo,FF06Pp,,FF06Pp
+Fluid Flow,pockmark,complex pockmark,FF05Cp,,FF05Cp
+Fluid Flow,pockmark,giant pockmark,FF05Gk,,FF05Gk
+Fluid Flow,pockmark,normal pockmark,FF05Np,,FF05Np
+Fluid Flow,pockmark,strings of pockmarks,FF05Sp,,FF05Sp
+Fluid Flow,pockmark,unit pockmark,FF05Up,,FF05Up
+Fluvial,drainage network,angular,Fl03Ar,,Fl03Ar
+Fluvial,drainage network,annular,Fl03Al,,Fl03Al
+Fluvial,drainage network,centrifugal,Fl03Cl,,Fl03Cl
+Fluvial,drainage network,centripetal,Fl03Ct,,Fl03Ct
+Fluvial,drainage network,dendritic,Fl03Dc,,Fl03Dc
+Fluvial,drainage network,distributary,Fl03Dy,,Fl03Dy
+Fluvial,drainage network,parallel,Fl03Pl,,Fl03Pl
+Fluvial,drainage network,radial,Fl03Rl,,Fl03Rl
+Fluvial,drainage network,trellis,Fl03Ts,,Fl03Ts
+Fluvial,floodplain,high-energy floodplain,Fl08Hc,BGUT name changed,Fl08Hf
+Fluvial,floodplain,low-energy floodplain,Fl08Lc,BGUT name changed,Fl08Lf
+Fluvial,floodplain,medium-energy floodplain,Fl08Mu,BGUT name changed,Fl08Mf
+Fluvial,floodplain,strath,Fl08xx,change in the tree,Fl08Sh
+Fluvial,floodplain,alluvial,Fl08xx,new entry,Fl08Al
+Fluvial,floodplain terrace,strath,Fl09Sh,,Fl09Sh
+Fluvial,floodplain terrace,high-energy floodplain,Fl09xx,change in the tree,Fl09Hf
+Fluvial,floodplain terrace,low-energy floodplain,Fl09xx,change in the tree,Fl09Lf
+Fluvial,floodplain terrace,medium-energy floodplain,Fl09xx,change in the tree,Fl09Mf
+Fluvial,floodplain terrace,alluvial,Fl09xx,new entry,Fl09Al
+Fluvial,channel ledge,strath,Fl12xxx,change in the tree,Fl12Sh
+Fluvial,channel ledge,high-energy floodplain,Fl12xxx,change in the tree,Fl12Hf
+Fluvial,channel ledge,low-energy floodplain,Fl12xxx,change in the tree,Fl12Lf
+Fluvial,channel ledge,medium-energy floodplain,Fl12xxx,change in the tree,Fl12Ml
+Fluvial,channel ledge,alluvial,Fl12xxx,new entry,Fl12Al
+Fluvial,Fluvial delta,Fluvial delta-front,Fl04Ft,"BGUT name changed, change Ft to Fd to match Fl11Fd",Fl04Fd
+Fluvial,Fluvial delta,Fluvial pro-delta,Fl04Fa,"BGUT name changed, change Fa to Fp to match Fl11Fp",Fl04Fp
+Fluvial,Fluvial delta lobe,Fluvial delta-front,Fl11Fd,BGUT name changed,Fl11Fd
+Fluvial,Fluvial delta lobe,Fluvial pro-delta,Fl11Fp,BGUT name changed,Fl11Fp
+Fluvial,Fluvial subaerial valley,Fluvial incised valley,Fl07Fi,BGUT name changed,Fl07Fi
+Fluvial,Fluvial subaerial valley,river valley,Fl07Rv,,Fl07Rv
+Fluvial,subaerial channel,creek,Fl01Ck,,Fl01Ck
+Fluvial,subaerial channel,distributary,Fl01Dr,,Fl01Dr
+Fluvial,subaerial channel,gully,Fl01Gy,,Fl01Gy
+Fluvial,subaerial channel,rill,Fl01Ri,,Fl01Ri
+Fluvial,subaerial channel,river,Fl01Rr,,Fl01Rr
+Fluvial,subaerial channel,tidal inlet,Fl01Ti,,Fl01Ti
+Glacial,hill-hole pair,glacitectonic hill,Gl14Gh,,Gl14Gh
+Glacial,hill-hole pair,glacitectonic hole,Gl14Ge,,Gl14Ge
+Glacial,ice-proximal fan,"ice-proximal fan aka grounding-line fan, aka grounding zone fan, aka ice contact fan",Gl20If,"no such BGUT, removed",Gl20If
+Glacial,iceberg ploughmark,multi-keeled ploughmark,Gl25Mp,,Gl25Mp
+Glacial,iceberg ploughmark,single-keeled ploughmark,Gl25Sp,,Gl25Sp
+Glacial,moraine,De Geer moraine,Gl01Dg,,Gl01Dg
+Glacial,moraine,lateral moraine,Gl01Lm,,Gl01Lm
+Glacial,moraine,push moraine,Gl01Pm,,Gl01Pm
+Glacial,moraine,recessional moraine,Gl01Rm,,Gl01Rm
+Glacial,moraine,shear-margin moraine,Gl01Sm,,Gl01Sm
+Glacial,moraine,terminal moraine,Gl01Tm,,Gl01Tm
+Glacial,streamlined landform,bundle structure,Gl02Bs,,Gl02Bs
+Glacial,streamlined landform,drumlin,Gl02Dn,,Gl02Dn
+Glacial,streamlined landform,flute,Gl02Fe,,Gl02Fe
+Glacial,streamlined landform,glacial crag and tail,Gl02Gc,,Gl02Gc
+Glacial,streamlined landform,groove,Gl02Gv,,Gl02Gv
+Glacial,streamlined landform,mega-scale glacial lineation,Gl02Mg,,Gl02Mg
+Glacial,streamlined landform,roche moutonnée,Gl02Re,,Gl02Re
+Glacial,streamlined landform,whaleback,Gl02Wk,,Gl02Wk
+Glacial,cross-shelf trough,hanging valley,Gl33Hy,,Gl33Hy
+Glacial,cross-shelf trough,valley/trough head,Gl33Vh,,Gl33Vh
+Glacial,U-shaped valley,hanging valley,Gl17Hv,,Gl17Hv
+Glacial,U-shaped valley,valley/trough head,Gl17Vt,,Gl17Vt
+Karst,carbonate karst,blind valley,Ka01Bv,,Ka01Bv
+Karst,carbonate karst,carbonate doline,Ka01Cd,,Ka01Cd
+Karst,carbonate karst,cone karst,Ka01Ck,,Ka01Ck
+Karst,carbonate karst,karst plain,Ka01Kp,,Ka01Kp
+Karst,carbonate karst,spring,Ka01Sg,,Ka01Sg
+Karst,carbonate karst,tower karst,Ka01Tk,,Ka01Tk
+Karst,salt karst,salt doline,Ka03Sd,,Ka03Sd
+Karst,sandstone karst,ruiniform,Ka02Rm,,Ka02Rm
+Karst,sandstone karst,sandstone doline,Ka02Se,,Ka02Se
+Marine,Marine barform,contourite drift,Ma03Cd,,Ma03Cd
+Marine,Marine barform,sediment apron,Ma03Sa,,Ma03Sa
+Marine,Marine barform,sediment bank,Ma03Sb,,Ma03Sb
+Marine,Marine barform,sediment drift,Ma03Sd,,Ma03Sd
+Marine,Marine barform,sediment lobe,Ma03Sl,,Ma03Sl
+Marine,Marine barform,sediment ridge,Ma03Sb,,Ma03Sb
+Marine,submarine canyon,blind canyon,Ma05Sc,"blind canyon is aka of slope-confined canyon, should use the same code",Ma05Sc
+Marine,submarine canyon,self-incising canyon,Ma05Sg,matching code from Ma11Si,Ma05Si
+Marine,submarine canyon,slope-confined canyon,Ma05Sc,"blind canyon is aka of slope-confined canyon, should use the same code",Ma05Sc
+Marine,submarine tributary canyon,blind canyon,Ma11Bc,"blind canyon is aka of slope-confined canyon, should use the same code",Ma11Sc
+Marine,submarine tributary canyon,self-incising canyon,Ma11Si,,Ma11Si
+Marine,submarine tributary canyon,slope-confined canyon,Ma11Sn,"matching code Ma05Sc, blind canyon is aka of slope-confined canyon, should use the same code",Ma11Sc
+Mass Movement,fall,debris fall,MM04Df,,MM04Df
+Mass Movement,fall,rock fall,MM04Rf,,MM04Rf
+Mass Movement,flow,debris flow,MM06Dw,,MM06Dw
+Mass Movement,flow,mudflow,MM06Mw,,MM06Mw
+Mass Movement,flow,rock avalanche,MM06Ra,,MM06Ra
+Mass Movement,flow,turbidity current,MM06Tc,,MM06Tc
+Mass Movement,slide,frontally confined slide,MM12Fc,,MM12Fc
+Mass Movement,slide,frontally emergent slide,MM12Fe,,MM12Fe
+Mass Movement,slide,rotational slide,MM12Rs,,MM12Rs
+Mass Movement,slide,slump,MM12Rs,,MM12Rs
+Mass Movement,slide,translational slide,MM12Ts,,MM12Ts
+Mass Movement,topple,debris topple,MM07Dt,,MM07Dt
+Mass Movement,topple,rock topple,MM07Rt,,MM07Rt
+Mass Movement,translated block,detached block,MM09Db,,MM09Db
+Mass Movement,translated block,outrunner block,MM09Ob,,MM09Ob
+Mass Movement,translated block,rafted block,MM09Rb,,MM09Rb
+Solid Earth,bedding ridge,cuesta,SE06Ca,,SE06Ca
+Solid Earth,bedding ridge,hogback,SE06Hk,,SE06Hk
+Solid Earth,bedding ridge,homoclinal ridge,SE06Hr,,SE06Hr
+Solid Earth,bedrock outcrop (undefined),bedded,SE04Bd,,SE04Bd
+Solid Earth,bedrock outcrop (undefined),foliated,SE04Fd,,SE04Fd
+Solid Earth,bedrock outcrop (undefined),massive,SE04Me,,SE04Me
+Solid Earth,magmatic outcrop,circular volcanic depression,SE05Cv,,SE05Cv
+Solid Earth,magmatic outcrop,magmatic dome,SE05Md,,SE05Md
+Solid Earth,magmatic outcrop,magmatic sheet,SE05Ms,,SE05Ms
+Solid Earth,magmatic outcrop,volcanic fissure,SE05Vf,,SE05Vf
+Solid Earth,magmatic outcrop,volcanic flow,SE05Vw,,SE05Vw
+Solid Earth,magmatic outcrop,volcanic plateau,SE05Vp,,SE05Vp
+Solid Earth,magmatic outcrop,volcanic plug/neck,SE05Vn,,SE05Vn
+Solid Earth,tectonic depression,fault valley,SE09Fv,,SE09Fv
+Solid Earth,tectonic depression,graben,SE09Gn,,SE09Gn
+Solid Earth,tectonic depression,half graben,SE09Hg,,SE09Hg
+Solid Earth,tectonic depression,tectonic basin,SE09Tb,,SE09Tb
+Solid Earth,tectonic high,back-tilted fault block,SE03Bf,,SE03Bf
+Solid Earth,tectonic high,horst,SE03Ht,,SE03Ht
+Solid Earth,tectonic high,solid earth compressional ridge,SE03Se,,SE03Se
+Solid Earth,tectonic high,tectonic dome,SE03Td,,SE03Td
+Solid Earth,tectonic escarpment,fault,SE14Ft,,SE14Ft
+Solid Earth,tectonic escarpment,fracture zone,SE14Fe,,SE14Fe
+Solid Earth,tectonic escarpment,joint,SE14Jt,,SE14Jt
+Solid Earth,tectonic lineament,fault,SE08Lt,,SE08Lt
+Solid Earth,tectonic lineament,fracture zone,SE08Fz,,SE08Fz
+Solid Earth,tectonic lineament,joint,SE08Jn,,SE08Jn
+Solid Earth,volcano (island or submarine),seamount,SE10St,"should be removed, change in the tree",SE10St
+Solid Earth,volcano (island or submarine),shield volcano,SE10Sv,,SE10Sv
+Solid Earth,volcano (island or submarine),stratovolcano,SE10So,,SE10So
+Solid Earth,guyot,volcanic,SE10xx,new entry,SE10Vo
+Solid Earth,guyot,non-volcanic,SE10xx,new entry,SE10Nv
+Any,Any,NA,xxxxxx,"new entry, suggested BGUT_code should be BGU_code + 'Na'",xxxxNa
+Any,Any,Unknown,xxxxxx,"new entry, suggested BGUT_code should be BGU_code + 'Un'",xxxxUn
+Solid Earth,volcano (island or submarine),NA,SE10xx,an example,SE10Na
+Solid Earth,volcano (island or submarine),Unknown,SE10xx,an example,SE10Un
