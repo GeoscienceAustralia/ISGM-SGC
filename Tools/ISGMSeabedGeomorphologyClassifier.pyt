@@ -125,7 +125,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param7.filter.type = "ValueList"
         param7.filter.list = ['NA']
         param7.value = 'NA'
-        param7.category = "Current-induced attributes"
+        param7.category = "Additional attributes for \nCurrent-induced BGUs and \npockmark BGU"
 
         # 9th parameter
         param8 = arcpy.Parameter(
@@ -138,7 +138,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param8.filter.type = "ValueList"
         param8.filter.list = ['NA']
         param8.value = 'NA'
-        param8.category = "Current-induced attributes"
+        param8.category = "Additional attributes for \nCurrent-induced BGUs and \npockmark BGU"
 
         # 10th parameter
         param9 = arcpy.Parameter(
@@ -150,7 +150,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param9.filter.type = "ValueList"
         param9.filter.list = ['NA','chain','field']
         param9.value = 'NA'
-        param9.category = "Additional attributes"
+        param9.category = "Other additional attributes"
 
         # 11th parameter
         param10 = arcpy.Parameter(
@@ -162,7 +162,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param10.filter.type = "ValueList"
         param10.filter.list = ['NA'] + sorted(['relict','palimpsest','modern'])
         param10.value = 'NA'        
-        param10.category = "Additional attributes"
+        param10.category = "Other additional attributes"
 
         # 12th parameter
         param11 = arcpy.Parameter(
@@ -174,7 +174,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param11.filter.type = "ValueList"
         param11.filter.list = ['NA'] + sorted(['surface','buried','partially buried'])
         param11.value = 'NA'        
-        param11.category = "Additional attributes"
+        param11.category = "Other additional attributes"
 
 
         # 13th parameter
@@ -188,7 +188,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param12.filter.list = ['NA'] + sorted(['aggradational','forced regressive','normal regressive',
                                                'lowstand normal regressive','highstand normal regressive','transgressive'])
         param12.value = 'NA'
-        param12.category = "Additional attributes"
+        param12.category = "Other additional attributes"
 
 
         # 14th parameter
@@ -202,7 +202,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param13.filter.list = ['NA'] + sorted(['hard','soft sediment (siliciclastic or carbonate)',
                                                'consolidated sediment'])
         param13.value = 'NA'
-        param13.category = "Additional attributes"
+        param13.category = "Other additional attributes"
 
 
         # 15th parameter
@@ -216,7 +216,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param14.filters[1].type = "ValueList"
         param14.values = [['NA','mm']]       
         param14.filters[1].list = ['mm','phi']
-        param14.category = "Additional attributes"
+        param14.category = "Other additional attributes"
 
         # 16th parameter
         param15 = arcpy.Parameter(
@@ -229,7 +229,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param15.filter.list = ['NA'] + sorted(['G','mG','msG','sG','gM','gmS','gS',
                                                '(g)M','(g)sM','(g)mS','(g)S','M','sM','mS','S'])
         param15.value = 'NA'
-        param15.category = "Additional attributes"
+        param15.category = "Other additional attributes"
 
         # 17th parameter
         param16 = arcpy.Parameter(
@@ -240,7 +240,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
             direction="Input")
         param16.columns = [['GPString','Gravel'],['GPString','Sand'],['GPString','Mud']]
         param16.values = [['NA','NA', 'NA']]
-        param16.category = "Additional attributes"
+        param16.category = "Other additional attributes"
  
 
         # 18th parameter
@@ -251,7 +251,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
             parameterType="Required",
             direction="Input")
         param17.value = 'NA'
-        param17.category = "Additional attributes"
+        param17.category = "Other additional attributes"
 
         # 19th parameter
         param18 = arcpy.Parameter(
@@ -286,7 +286,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
                                                'Tide dominated, wave and fluvial influenced',
                                                'Wave dominated, tide and fluvial influenced'])
         param18.value = 'NA'
-        param18.category = "Additional attributes"
+        param18.category = "Other additional attributes"
 
         # 20th parameter
         param19 = arcpy.Parameter(
@@ -298,7 +298,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
         param19.filter.type = "ValueList"
         param19.filter.list = ['NA','aeolian']
         param19.value = 'NA'
-        param19.category = "Additional attributes"
+        param19.category = "Other additional attributes"
 
         # 21st parameter
         param20 = arcpy.Parameter(
@@ -340,7 +340,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
             parameterType="Optional",
             direction="Input")
         param23.value = False
-        param23.category = "Reset parameters"
+        param23.category = "Reset parameters?"
 
         
         parameters = [param0, param1, param2, param3, param4, param5, param6,param7,param8,param9,param10,
@@ -359,7 +359,6 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
 
         # reset parameters when the reset box is ticked
         if parameters[23].value == True:
-            #parameters[2].value = 'NA'
             parameters[2].value = 'NA'
             parameters[3].value = 'NA'
             parameters[4].value = 'NA'
@@ -697,7 +696,7 @@ class ISGM_Seabed_Geomorphology_Classifier(object):
 
         # throw warning message and stop tool when all features are selected
         if selectedNo[0] == totalNo[0]:
-            messages.addErrorMessage("Warning! You cannot use the tool when all features are selected. This is to prevent accidentally overiding the existing attributes.")
+            messages.addErrorMessage("Warning! You cannot apply the tool to all features at the same time. This is to prevent accidentally overiding the existing attributes.")
             messages.addErrorMessage("If you do want to assign all features the same attribute values, first, select a subset of features and run the tool; then switch the selection and run the tool again.")
             raise arcpy.ExecuteError
             
@@ -1334,7 +1333,10 @@ class helpers(object):
         else:            
             csvFile = path + '/' + 'BGU_codes.csv'
             bguPD = pd.read_csv(csvFile,header=0,sep=',')
-            BGU_code = bguPD[(bguPD.SETTING == setting) & (bguPD.BGU == BGU)].Suggested_BGU_Code.values[0]
+            try:
+                BGU_code = bguPD[(bguPD.SETTING == setting) & (bguPD.BGU == BGU)].Suggested_BGU_Code.values[0]
+            except:
+                BGU_code = '?'
         return BGU_code
 
 
@@ -1352,7 +1354,10 @@ class helpers(object):
         else:
             csvFile = path + '/' + 'BGUT_codes.csv'
             bgutPD = pd.read_csv(csvFile,header=0,sep=',')
-            BGUT_code = bgutPD[(bgutPD.SETTING == setting) & (bgutPD.BGU == BGU) & (bgutPD.BGUT == BGU_T)].Suggested_BGUT_Code.values[0]
+            try:
+                BGUT_code = bgutPD[(bgutPD.SETTING == setting) & (bgutPD.BGU == BGU) & (bgutPD.BGUT == BGU_T)].Suggested_BGUT_Code.values[0]
+            except:
+                BGUT_code = '?'
         return BGUT_code
         
         
